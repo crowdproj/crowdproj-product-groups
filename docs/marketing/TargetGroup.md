@@ -1,30 +1,29 @@
-# Target group 
+# Target audience 
 
-Считаем, что целевая аудитория нашего сервиса:
-1. Предприятия розничной и оптовой торговли, управление складскими помещениями, маркетплейсы   
-    1. предоставления своей услуги SAAS напрямую 
-    2. встраивание в цепочку создания стоимости через предоставления своих услуг маркетплейсам.
+We consider that the target audience of our service is:
+1. Retail and wholesale trading enterprises, warehouse management, marketplaces
+    1. Providing their SaaS service directly 
+    2. Embedding in the supply chain by providing our services to marketplace 
 
-## Гипотетический портрет пользователя для службы Потребностей
+## Hypothetical user profile for the Needs service
 
-1. Высококвалифицированный инженер среднего или высшего звена, который ищет поставщиков компонентов для разрабатываемого
-   продукта.
-2. Мужчина от 30 до 50 лет
-3. С высшим образованием
-4. С критическим складом ума, со склонностью сопоставлять цифры, технические характеристики и не ведется на броскую
+1. A highly qualified engineer of middle or senior level, who is looking for components suppliers for developing product
+2. A man aged 30 to 50 
+3. Has a higher education
+4. Has a critical mindset, with a tendency to compare numbers, технические характеристики и не ведется на броскую
    рекламу
 5. Как правило, женат, имеет детей (как маленьких, так и взрослых), обеспечен, имеет жилье и автомобиль
 
-## Гипотетический портрет пользователя нашего сервиса
+## Hypothetical user profile for the ProductGroup service
 
-Можно выделить несколько сегментов пользователей
+It is possible to identify several types of users
 
-1. Высококвалифицированный и опытный сотрудник отдела продаж, знающий как продукт, так и технические детали
-    1. Мужчина от 30 до 50 лет
-    2. С высшим образованием, знает технологические нюансы продаваемой продукции и как эта продукция используется
-    3. Знаком лично с большинством клиентов, большая часть всех продаж через личные контакты
-2. Владелец бизнеса, финансовый директор
-    1. Мужчина от 30 до 60 лет
-    2. С высшим образованием
-    3. Как правило, женат, имеет детей (как маленьких, так и взрослых), обеспечен, имеет жилье и автомобиль
-    4. Ответственный, умеющий рисковать, ценящий свое время, авторитарный
+1. A highly qualified and experienced sales department employee who knows both the product and technical details
+    1. man aged 30 to 50
+    2. Has a higher education and knows technical details of selling products and how it is used
+    3. Knows personally with most customers with a large portion of sales coming from personal contacts
+2. Business owner, CFO
+    1. man aged 30 to 50
+    2. Has a higher education
+    6. Usually married, has children (both young and grow up), financially secure, owns a house and a car
+    7. Responsible, risk-taker, values his time, authoritative
