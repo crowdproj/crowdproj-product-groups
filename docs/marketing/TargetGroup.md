@@ -1,18 +1,16 @@
 # Target audience 
 
 We consider that the target audience of our service is:
-1. Retail and wholesale trading enterprises, warehouse management, marketplaces
+1. Retail and wholesale companies which interested in starting their own marketplace
     1. Providing their SaaS service directly 
-    2. Embedding in the supply chain by providing our services to marketplace 
 
 ## Hypothetical user profile for the Needs service
 
 1. A highly qualified engineer of middle or senior level, who is looking for components suppliers for developing product
 2. A man aged 30 to 50 
 3. Has a higher education
-4. Has a critical mindset, with a tendency to compare numbers, технические характеристики и не ведется на броскую
-   рекламу
-5. Как правило, женат, имеет детей (как маленьких, так и взрослых), обеспечен, имеет жилье и автомобиль
+4. Has a critical mindset, with a tendency to compare numbers, tech specs and is not followed by catchy ad
+5. Normally he is married, has children (either young or adult), endowed
 
 ## Hypothetical user profile for the ProductGroup service
 
