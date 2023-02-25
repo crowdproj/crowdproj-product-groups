@@ -1,0 +1,12 @@
+#  Stakeholders List
+
+| Name               | Role            | Category   | Influence | Interest | Interests                                               | Contacts                  | Contact frequency | Additional                              |
+|--------------------|-----------------|------------|-----------|----------|---------------------------------------------------------|---------------------------|-------------------|-----------------------------------------|
+| Никольский Николай | CTO             | internal   | high      | high     | projects condition, deadlines, troubles, salary         | niko@email.dom            | everyday          |                                         |
+| Сергей Окапов      | investor, CEO   | external   | high      | high     | бюджет, spendings, completion deadlines, payback, audit | +7 111 111 11111          | everyweek         |                                         |
+| Германов Герман    | CFO             | internal   | high      | high     | marketing, budget, requirments, salary                  | germanov@email.dom        | everyday          |                                         |
+| ФСТЭК              | regulator       | regulator  | average   | low      | information security                                    | https://fstec.ru/         | no                | registers as an information distributor |
+| ФНС                | regulator       | regulator  | average   | low      | tax payment                                             | https://www.nalog.gov.ru/ | every quarter     |                                         |
+| Яндекс.Облако      | supplier        | supplier   | average   | no       | tax payment, compliance with laws                       | https://cloud.yandex.ru/  | no                |                                         |
+| Демьянов Сергей    | CTO, competitor | competitor | average   | average  | take market share                                       |                           | no                |                                         |
+| Токарев Алексей    | CTO, competitor | competitor | average   | average  | take market share                                       |                           | no                |                                         |

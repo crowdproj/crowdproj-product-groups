@@ -1,0 +1,1 @@
+![InfrastructureSchema](../resources/infrastructureSchema.png)
