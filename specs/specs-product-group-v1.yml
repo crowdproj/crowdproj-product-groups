@@ -1,0 +1,397 @@
+openapi: 3.0.4
+info:
+  title: Product group
+  description: This is a service which can group and sort products by different params
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/v1
+tags:
+  - name: group
+    description: A product group
+paths:
+  /group/create:
+    post:
+      tags:
+        - group
+      summary: Create group
+      operationId: groupCreate
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCreateRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupCreateResponse'
+  /group/read:
+    post:
+      tags:
+        - group
+      summary: Read group
+      operationId: groupRead
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupReadRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupReadResponse'
+  /group/update:
+    post:
+      tags:
+        - group
+      summary: Update group
+      operationId: groupUpdate
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupUpdateRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupUpdateResponse'
+  /group/delete:
+    post:
+      tags:
+        - group
+      summary: Delete group
+      operationId: groupDelete
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupDeleteRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupDeleteResponse'
+  /group/search:
+    post:
+      tags:
+        - group
+      summary: Search group
+      operationId: groupSearch
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupSearchRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSearchResponse'
+
+components:
+  schemas:
+
+    IRequest:
+      type: object
+      description: Basic interface for all requests
+      properties:
+        requestType:
+          type: string
+          description: A field-discriminator for calculating a type of request
+          example: create
+        requestId:
+          type: string
+          description: Identification of debugs request
+      discriminator:
+        propertyName: requestType
+        mapping:
+          create: '#/components/schemas/GroupCreateRequest'
+          read: '#/components/schemas/GroupReadRequest'
+          update: '#/components/schemas/GroupUpdateRequest'
+          delete: '#/components/schemas/GroupDeleteRequest'
+          search: '#/components/schemas/GroupSearchRequest'
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        group:
+          type: string
+        field:
+          type: string
+        message:
+          type: string
+
+    ResponseResult:
+      type: string
+      enum:
+        - success
+        - error
+
+    IResponse:
+      type: object
+      description: Basic interface for all responses
+      properties:
+        responseType:
+          type: string
+          description: A field-discriminator for calculating a type of response
+          example: create
+        requestId:
+          type: string
+          description: An identification of debugs response
+        result:
+          $ref: '#/components/schemas/ResponseResult'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+
+      discriminator:
+        propertyName: responseType
+        mapping:
+          create: '#/components/schemas/GroupCreateResponse'
+          read: '#/components/schemas/GroupReadResponse'
+          update: '#/components/schemas/GroupUpdateResponse'
+          delete: '#/components/schemas/GroupDeleteResponse'
+          search: '#/components/schemas/GroupSearchResponse'
+
+    UserId:
+      type: string
+      description: A users identification
+    GroupId:
+      type: string
+      description: A groups identification
+    GroupLock:
+      type: string
+      description: A version of optimistic locking
+    PropertiesId:
+      type: string
+      description: Groups properties identification to which the group belongs
+
+    BaseGroup:
+      type: object
+      description: The object describes the properties that are the same for create and update
+      properties:
+        name:
+          type: string
+          description: Name of a group
+        description:
+          type: string
+          description: Description of a group
+        propertiesFkId:
+          $ref: '#/components/schemas/PropertiesId'
+
+    GroupCreateObject:
+      allOf:
+        - $ref: '#/components/schemas/BaseGroup'
+
+    GroupCreateRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/GroupRequestDebug'
+        - type: object
+          properties:
+            group:
+              $ref: '#/components/schemas/GroupCreateObject'
+
+    GroupReadObject:
+      allOf:
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/GroupId'
+
+    GroupReadRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/GroupRequestDebug'
+        - type: object
+          properties:
+            group:
+              $ref: '#/components/schemas/GroupReadObject'
+
+    GroupUpdateObject:
+      allOf:
+        - $ref: '#/components/schemas/BaseGroup'
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/GroupId'
+            lock:
+              $ref: '#/components/schemas/GroupLock'
+
+    GroupUpdateRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/GroupRequestDebug'
+        - type: object
+          properties:
+            ad:
+              $ref: '#/components/schemas/GroupUpdateObject'
+
+    GroupDeleteObject:
+      allOf:
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/GroupId'
+            lock:
+              $ref: '#/components/schemas/GroupLock'
+
+    GroupDeleteRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/GroupRequestDebug'
+        - type: object
+          properties:
+            ad:
+              $ref: '#/components/schemas/GroupDeleteObject'
+
+    GroupSearchFilter:
+      type: object
+      description: Set of searching filters
+      properties:
+        searchString:
+          type: string
+          description: A search string looking for groups
+
+    GroupSearchRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/GroupRequestDebug'
+        - type: object
+          properties:
+            adFilter:
+              $ref: '#/components/schemas/GroupSearchFilter'
+
+    GroupResponseObject:
+      allOf:
+        - $ref: '#/components/schemas/BaseGroup'
+        - type: object
+          description: An object which returns as a backend response
+          properties:
+            id:
+              $ref: '#/components/schemas/GroupId'
+            ownerId:
+              $ref: '#/components/schemas/UserId'
+            lock:
+              $ref: '#/components/schemas/GroupLock'
+            permissions:
+              type: array
+              uniqueItems: true
+              items:
+                $ref: '#/components/schemas/GroupPermissions'
+
+    GroupPermissions:
+      type: string
+      description: Available operations with groups for users
+      enum:
+        - read
+        - update
+        - delete
+        - makeVisiblePublic
+        - makeVisibleOwn
+        - makeVisibleGroup
+
+    GroupResponseSingle:
+      allOf:
+        - type: object
+          description: Response with one groups object
+          properties:
+            ad:
+              $ref: '#/components/schemas/GroupResponseObject'
+
+    GroupResponseMulti:
+      allOf:
+        - type: object
+          description: A list of found objects
+          properties:
+            groups:
+              type: array
+              items:
+                $ref: '#/components/schemas/GroupResponseObject'
+
+    GroupCreateResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/GroupResponseSingle'
+
+    GroupReadResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/GroupResponseSingle'
+
+    GroupUpdateResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/GroupResponseSingle'
+
+    GroupDeleteResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/GroupResponseSingle'
+
+    GroupSearchResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/GroupResponseMulti'
+
+    # STUBS ======================
+    GroupRequestDebugMode:
+      type: string
+      enum:
+        - prod
+        - test
+        - stub
+
+    GroupRequestDebug:
+      type: object
+      properties:
+        debug:
+          $ref: '#/components/schemas/GroupDebug'
+
+    GroupDebug:
+      type: object
+      properties:
+        mode:
+          $ref: '#/components/schemas/GroupRequestDebugMode'
+        stub:
+          $ref: '#/components/schemas/GroupRequestDebugStubs'
+
+    GroupRequestDebugStubs:
+      type: string
+      description: Enumerations of all stubs
+      enum:
+        - success
+        - notFound
+        - badId
+        - badName
+        - badDescription
+        - cannotDelete
+        - badSearchString
