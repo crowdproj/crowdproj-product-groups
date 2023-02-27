@@ -23,7 +23,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GroupCreateRequest'
+              $ref: '#/components/schemas/ProductGroupCreateRequest'
         required: true
       responses:
         200:
@@ -31,7 +31,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GroupCreateResponse'
+                $ref: '#/components/schemas/ProductGroupCreateResponse'
   /group/read:
     post:
       tags:
@@ -43,7 +43,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GroupReadRequest'
+              $ref: '#/components/schemas/ProductGroupReadRequest'
         required: true
       responses:
         200:
@@ -51,7 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GroupReadResponse'
+                $ref: '#/components/schemas/ProductGroupReadResponse'
   /group/update:
     post:
       tags:
@@ -63,7 +63,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GroupUpdateRequest'
+              $ref: '#/components/schemas/ProductGroupUpdateRequest'
         required: true
       responses:
         200:
@@ -71,7 +71,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GroupUpdateResponse'
+                $ref: '#/components/schemas/ProductGroupUpdateResponse'
   /group/delete:
     post:
       tags:
@@ -83,7 +83,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GroupDeleteRequest'
+              $ref: '#/components/schemas/ProductGroupDeleteRequest'
         required: true
       responses:
         200:
@@ -91,7 +91,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GroupDeleteResponse'
+                $ref: '#/components/schemas/ProductGroupDeleteResponse'
   /group/search:
     post:
       tags:
@@ -103,7 +103,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GroupSearchRequest'
+              $ref: '#/components/schemas/ProductGroupSearchRequest'
         required: true
       responses:
         200:
@@ -111,12 +111,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GroupSearchResponse'
+                $ref: '#/components/schemas/ProductGroupSearchResponse'
 
 components:
   schemas:
 
-    IRequest:
+    IProductGroupRequest:
       type: object
       description: Basic interface for all requests
       properties:
@@ -130,11 +130,11 @@ components:
       discriminator:
         propertyName: requestType
         mapping:
-          create: '#/components/schemas/GroupCreateRequest'
-          read: '#/components/schemas/GroupReadRequest'
-          update: '#/components/schemas/GroupUpdateRequest'
-          delete: '#/components/schemas/GroupDeleteRequest'
-          search: '#/components/schemas/GroupSearchRequest'
+          create: '#/components/schemas/ProductGroupCreateRequest'
+          read: '#/components/schemas/ProductGroupReadRequest'
+          update: '#/components/schemas/ProductGroupUpdateRequest'
+          delete: '#/components/schemas/ProductGroupDeleteRequest'
+          search: '#/components/schemas/ProductGroupSearchRequest'
 
     Error:
       type: object
@@ -148,13 +148,13 @@ components:
         message:
           type: string
 
-    ResponseResult:
+    ProductGroupResponseResult:
       type: string
       enum:
         - success
         - error
 
-    IResponse:
+    IProductGroupResponse:
       type: object
       description: Basic interface for all responses
       properties:
@@ -166,7 +166,7 @@ components:
           type: string
           description: An identification of debugs response
         result:
-          $ref: '#/components/schemas/ResponseResult'
+          $ref: '#/components/schemas/ProductGroupResponseResult'
         errors:
           type: array
           items:
@@ -175,142 +175,142 @@ components:
       discriminator:
         propertyName: responseType
         mapping:
-          create: '#/components/schemas/GroupCreateResponse'
-          read: '#/components/schemas/GroupReadResponse'
-          update: '#/components/schemas/GroupUpdateResponse'
-          delete: '#/components/schemas/GroupDeleteResponse'
-          search: '#/components/schemas/GroupSearchResponse'
+          create: '#/components/schemas/ProductGroupCreateResponse'
+          read: '#/components/schemas/ProductGroupReadResponse'
+          update: '#/components/schemas/ProductGroupUpdateResponse'
+          delete: '#/components/schemas/ProductGroupDeleteResponse'
+          search: '#/components/schemas/ProductGroupSearchResponse'
 
     UserId:
       type: string
-      description: A users identification
-    GroupId:
+      description: A user identification
+    ProductGroupId:
       type: string
-      description: A groups identification
-    GroupLock:
+      description: A product group identification
+    ProductGroupLock:
       type: string
       description: A version of optimistic locking
     PropertiesId:
       type: string
-      description: Groups properties identification to which the group belongs
+      description: Product group properties identification to which the group belongs
 
-    BaseGroup:
+    BaseProductGroup:
       type: object
       description: The object describes the properties that are the same for create and update
       properties:
         name:
           type: string
-          description: Name of a group
+          description: Name of a product group
         description:
           type: string
-          description: Description of a group
+          description: Description of a product group
         propertiesFkId:
           $ref: '#/components/schemas/PropertiesId'
 
-    GroupCreateObject:
+    ProductGroupCreateObject:
       allOf:
-        - $ref: '#/components/schemas/BaseGroup'
+        - $ref: '#/components/schemas/BaseProductGroup'
 
-    GroupCreateRequest:
+    ProductGroupCreateRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
-        - $ref: '#/components/schemas/GroupRequestDebug'
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/ProductGroupRequestDebug'
         - type: object
           properties:
             group:
-              $ref: '#/components/schemas/GroupCreateObject'
+              $ref: '#/components/schemas/ProductGroupCreateObject'
 
-    GroupReadObject:
+    ProductGroupReadObject:
       allOf:
         - type: object
           properties:
             id:
-              $ref: '#/components/schemas/GroupId'
+              $ref: '#/components/schemas/ProductGroupId'
 
-    GroupReadRequest:
+    ProductGroupReadRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
-        - $ref: '#/components/schemas/GroupRequestDebug'
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/ProductGroupRequestDebug'
         - type: object
           properties:
             group:
-              $ref: '#/components/schemas/GroupReadObject'
+              $ref: '#/components/schemas/ProductGroupReadObject'
 
-    GroupUpdateObject:
+    ProductGroupUpdateObject:
       allOf:
-        - $ref: '#/components/schemas/BaseGroup'
+        - $ref: '#/components/schemas/BaseProductGroup'
         - type: object
           properties:
             id:
-              $ref: '#/components/schemas/GroupId'
+              $ref: '#/components/schemas/ProductGroupId'
             lock:
-              $ref: '#/components/schemas/GroupLock'
+              $ref: '#/components/schemas/ProductGroupLock'
 
-    GroupUpdateRequest:
+    ProductGroupUpdateRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
-        - $ref: '#/components/schemas/GroupRequestDebug'
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/ProductGroupRequestDebug'
         - type: object
           properties:
             ad:
-              $ref: '#/components/schemas/GroupUpdateObject'
+              $ref: '#/components/schemas/ProductGroupUpdateObject'
 
-    GroupDeleteObject:
+    ProductGroupDeleteObject:
       allOf:
         - type: object
           properties:
             id:
-              $ref: '#/components/schemas/GroupId'
+              $ref: '#/components/schemas/ProductGroupId'
             lock:
-              $ref: '#/components/schemas/GroupLock'
+              $ref: '#/components/schemas/ProductGroupLock'
 
-    GroupDeleteRequest:
+    ProductGroupDeleteRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
-        - $ref: '#/components/schemas/GroupRequestDebug'
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/ProductGroupRequestDebug'
         - type: object
           properties:
             ad:
-              $ref: '#/components/schemas/GroupDeleteObject'
+              $ref: '#/components/schemas/ProductGroupDeleteObject'
 
-    GroupSearchFilter:
+    ProductGroupSearchFilter:
       type: object
       description: Set of searching filters
       properties:
         searchString:
           type: string
-          description: A search string looking for groups
+          description: A search string looking for product groups
 
-    GroupSearchRequest:
+    ProductGroupSearchRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
-        - $ref: '#/components/schemas/GroupRequestDebug'
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/ProductGroupRequestDebug'
         - type: object
           properties:
             adFilter:
-              $ref: '#/components/schemas/GroupSearchFilter'
+              $ref: '#/components/schemas/ProductGroupSearchFilter'
 
-    GroupResponseObject:
+    ProductGroupResponseObject:
       allOf:
-        - $ref: '#/components/schemas/BaseGroup'
+        - $ref: '#/components/schemas/BaseProductGroup'
         - type: object
           description: An object which returns as a backend response
           properties:
             id:
-              $ref: '#/components/schemas/GroupId'
+              $ref: '#/components/schemas/ProductGroupId'
             ownerId:
               $ref: '#/components/schemas/UserId'
             lock:
-              $ref: '#/components/schemas/GroupLock'
+              $ref: '#/components/schemas/ProductGroupLock'
             permissions:
               type: array
               uniqueItems: true
               items:
-                $ref: '#/components/schemas/GroupPermissions'
+                $ref: '#/components/schemas/ProductGroupPermissions'
 
-    GroupPermissions:
+    ProductGroupPermissions:
       type: string
-      description: Available operations with groups for users
+      description: Available operations with product groups for users
       enum:
         - read
         - update
@@ -319,15 +319,15 @@ components:
         - makeVisibleOwn
         - makeVisibleGroup
 
-    GroupResponseSingle:
+    ProductGroupResponseSingle:
       allOf:
         - type: object
-          description: Response with one groups object
+          description: Response with one product group object
           properties:
-            ad:
-              $ref: '#/components/schemas/GroupResponseObject'
+            group:
+              $ref: '#/components/schemas/ProductGroupResponseObject'
 
-    GroupResponseMulti:
+    ProductGroupResponseMulti:
       allOf:
         - type: object
           description: A list of found objects
@@ -335,56 +335,56 @@ components:
             groups:
               type: array
               items:
-                $ref: '#/components/schemas/GroupResponseObject'
+                $ref: '#/components/schemas/ProductGroupResponseObject'
 
-    GroupCreateResponse:
+    ProductGroupCreateResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
-        - $ref: '#/components/schemas/GroupResponseSingle'
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/ProductGroupResponseSingle'
 
-    GroupReadResponse:
+    ProductGroupReadResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
-        - $ref: '#/components/schemas/GroupResponseSingle'
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/ProductGroupResponseSingle'
 
-    GroupUpdateResponse:
+    ProductGroupUpdateResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
-        - $ref: '#/components/schemas/GroupResponseSingle'
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/ProductGroupResponseSingle'
 
-    GroupDeleteResponse:
+    ProductGroupDeleteResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
-        - $ref: '#/components/schemas/GroupResponseSingle'
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/ProductGroupResponseSingle'
 
-    GroupSearchResponse:
+    ProductGroupSearchResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
-        - $ref: '#/components/schemas/GroupResponseMulti'
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/ProductGroupResponseMulti'
 
     # STUBS ======================
-    GroupRequestDebugMode:
+    ProductGroupRequestDebugMode:
       type: string
       enum:
         - prod
         - test
         - stub
 
-    GroupRequestDebug:
+    ProductGroupRequestDebug:
       type: object
       properties:
         debug:
-          $ref: '#/components/schemas/GroupDebug'
+          $ref: '#/components/schemas/ProductGroupDebug'
 
-    GroupDebug:
+    ProductGroupDebug:
       type: object
       properties:
         mode:
-          $ref: '#/components/schemas/GroupRequestDebugMode'
+          $ref: '#/components/schemas/ProductGroupRequestDebugMode'
         stub:
-          $ref: '#/components/schemas/GroupRequestDebugStubs'
+          $ref: '#/components/schemas/ProductGroupRequestDebugStubs'
 
-    GroupRequestDebugStubs:
+    ProductGroupRequestDebugStubs:
       type: string
       description: Enumerations of all stubs
       enum:

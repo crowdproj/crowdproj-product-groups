@@ -5,7 +5,7 @@ plugins {
     application
 }
 
-group = "ru.otus.otuskotlin.marketplace"
+group = "com.crowdproj.marketplace"
 version = "1.0-SNAPSHOT"
 
 allprojects {
