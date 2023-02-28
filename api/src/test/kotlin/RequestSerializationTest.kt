@@ -1,6 +1,6 @@
 package ru.otus.otuskotlin.marketplace.api.v1
 
-import apiMapper
+import apimappers.apiMapper
 import ru.otus.otuskotlin.marketplace.api.v1.models.*
 import kotlin.test.Test
 import kotlin.test.assertContains
@@ -14,8 +14,8 @@ class RequestSerializationTest {
             stub = PgRequestDebugStubs.BAD_NAME
         ),
         pg = PgCreateObject(
-            name = "ad title",
-            description = "ad description",
+            name = "pg title",
+            description = "pg description",
             properties = "Prop!",
             deleted = true,
         )
@@ -25,10 +25,10 @@ class RequestSerializationTest {
     fun serialize() {
         val json = apiMapper.writeValueAsString(request)
 
-        assertContains(json, Regex("\"name\":\\s*\"ad title\""))
-        assertContains(json, Regex("\"mode\":\\s*\"stub\""))
-        assertContains(json, Regex("\"stub\":\\s*\"badName\""))
-        assertContains(json, Regex("\"requestType\":\\s*\"create\""))
+        assertContains(json, """"name":"pg title"""")
+        assertContains(json, Regex(""""mode":"stub""""))
+        assertContains(json, Regex(""""stub":"badName""""))
+        assertContains(json, Regex(""""requestType":"create"""))
     }
 
     @Test

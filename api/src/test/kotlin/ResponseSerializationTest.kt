@@ -1,6 +1,6 @@
 package ru.otus.otuskotlin.marketplace.api.v1
 
-import apiMapper
+import apimappers.apiMapper
 import ru.otus.otuskotlin.marketplace.api.v1.models.*
 import kotlin.test.Test
 import kotlin.test.assertContains
@@ -10,8 +10,8 @@ class ResponseSerializationTest {
     private val response = PgCreateResponse(
         requestId = "123",
         pg = PgResponseObject(
-            name = "ad title",
-            description = "ad description",
+            name = "pg title",
+            description = "pg description",
             properties = "Prop",
             deleted = true,
         )
@@ -21,9 +21,9 @@ class ResponseSerializationTest {
     fun serialize() {
         val json = apiMapper.writeValueAsString(response)
 
-        assertContains(json, Regex("\"name\":\\s*\"ad title\""))
-        assertContains(json, Regex("\"properties\":\\s*\"Prop\""))
-        assertContains(json, Regex("\"responseType\":\\s*\"create\""))
+        assertContains(json, """"name":"pg title"""")
+        assertContains(json, """"properties":"Prop"""")
+        assertContains(json, """"responseType":"create"""")
     }
 
     @Test
