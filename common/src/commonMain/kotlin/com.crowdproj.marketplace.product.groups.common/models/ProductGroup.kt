@@ -1,4 +1,4 @@
-package models
+package com.crowdproj.marketplace.product.groups.common.models
 
 data class ProductGroup(
     var id: ProductGroupId = ProductGroupId.NONE,

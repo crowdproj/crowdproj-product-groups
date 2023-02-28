@@ -1,8 +1,9 @@
-import exceptions.UnknownProductGroupCommand
-import models.*
-import ru.otus.otuskotlin.marketplace.api.v1.models.*
+import com.crowdproj.marketplace.product.groups.api.models.*
+import com.crowdproj.marketplace.product.groups.common.ProductGroupContext
+import com.crowdproj.marketplace.product.groups.common.models.*
+import com.crowdproj.marketplace.product.groups.mappers.exceptions.UnknownProductGroupCommand
 
-fun ProductGroupContext.toTransport(): IResponse = when (val cmd = command) {
+fun ProductGroupContext.toTransport(): IProductGroupResponse = when (val cmd = command) {
     ProductGroupCommand.NONE -> throw UnknownProductGroupCommand(cmd)
     ProductGroupCommand.CREATE -> toTransportCreate()
     ProductGroupCommand.READ -> toTransportRead()

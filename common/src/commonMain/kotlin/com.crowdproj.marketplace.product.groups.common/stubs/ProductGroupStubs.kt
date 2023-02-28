@@ -1,4 +1,4 @@
-package stubs
+package com.crowdproj.marketplace.product.groups.common.stubs
 
 enum class ProductGroupStubs {
     NONE,

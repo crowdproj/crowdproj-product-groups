@@ -1,6 +1,8 @@
+package com.crowdproj.marketplace.product.groups.common
+
+import com.crowdproj.marketplace.product.groups.common.models.*
 import kotlinx.datetime.Instant
-import models.*
-import stubs.ProductGroupStubs
+import com.crowdproj.marketplace.product.groups.common.stubs.ProductGroupStubs
 
 data class ProductGroupContext(
 

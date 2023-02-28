@@ -1,4 +1,4 @@
-package models
+package com.crowdproj.marketplace.product.groups.common.models
 
 import kotlin.jvm.JvmInline
 

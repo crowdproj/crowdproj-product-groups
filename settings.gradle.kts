@@ -1,4 +1,4 @@
-rootProject.name = "crowdproj-product-groups"
+rootProject.name = "product-groups"
 
 pluginManagement {
     val kotlinVersion: String by settings

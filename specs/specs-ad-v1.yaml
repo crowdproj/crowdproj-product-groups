@@ -116,7 +116,7 @@ paths:
 components:
   schemas:
 
-    IRequest:
+    IProductGroupRequest:
       type: object
       description: Базовый интерфейс для всех запросов
       properties:
@@ -154,7 +154,7 @@ components:
         - success
         - error
 
-    IResponse:
+    IProductGroupResponse:
       type: object
       description: Базовый интерфейс для всех ответов
       properties:
@@ -210,7 +210,7 @@ components:
 
     PgInitResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/IProductGroupResponse'
 
     PgCreateObject:
       allOf:
@@ -218,7 +218,7 @@ components:
 
     PgCreateRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/IProductGroupRequest'
         - $ref: '#/components/schemas/PgRequestDebug'
         - type: object
           properties:
@@ -234,7 +234,7 @@ components:
 
     PgReadRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/IProductGroupRequest'
         - $ref: '#/components/schemas/PgRequestDebug'
         - type: object
           properties:
@@ -253,7 +253,7 @@ components:
 
     PgUpdateRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/IProductGroupRequest'
         - $ref: '#/components/schemas/PgRequestDebug'
         - type: object
           properties:
@@ -271,7 +271,7 @@ components:
 
     PgDeleteRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/IProductGroupRequest'
         - $ref: '#/components/schemas/PgRequestDebug'
         - type: object
           properties:
@@ -301,7 +301,7 @@ components:
 
     PgSearchRequest:
       allOf:
-        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/IProductGroupRequest'
         - $ref: '#/components/schemas/PgRequestDebug'
         - type: object
           properties:
@@ -352,27 +352,27 @@ components:
 
     PgCreateResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/IProductGroupResponse'
         - $ref: '#/components/schemas/PgResponseSingle'
 
     PgReadResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/IProductGroupResponse'
         - $ref: '#/components/schemas/PgResponseSingle'
 
     PgUpdateResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/IProductGroupResponse'
         - $ref: '#/components/schemas/PgResponseSingle'
 
     PgDeleteResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/IProductGroupResponse'
         - $ref: '#/components/schemas/PgResponseSingle'
 
     PgSearchResponse:
       allOf:
-        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/IProductGroupResponse'
         - $ref: '#/components/schemas/PgResponseMulti'
 
     # STUBS ======================

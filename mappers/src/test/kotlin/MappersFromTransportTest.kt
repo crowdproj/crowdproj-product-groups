@@ -1,7 +1,8 @@
-import models.ProductGroupWorkMode
+import com.crowdproj.marketplace.product.groups.api.models.*
+import com.crowdproj.marketplace.product.groups.common.ProductGroupContext
+import com.crowdproj.marketplace.product.groups.common.models.ProductGroupWorkMode
 import org.junit.Test
-import ru.otus.otuskotlin.marketplace.api.v1.models.*
-import stubs.ProductGroupStubs
+import com.crowdproj.marketplace.product.groups.common.stubs.ProductGroupStubs
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 

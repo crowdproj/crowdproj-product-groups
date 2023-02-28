@@ -1,7 +1,7 @@
 package ru.otus.otuskotlin.marketplace.api.v1
 
-import apimappers.apiMapper
-import ru.otus.otuskotlin.marketplace.api.v1.models.*
+import com.crowdproj.marketplace.product.groups.api.apiMapper
+import com.crowdproj.marketplace.product.groups.api.models.*
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
@@ -34,7 +34,7 @@ class RequestSerializationTest {
     @Test
     fun deserialize() {
         val json = apiMapper.writeValueAsString(request)
-        val obj = apiMapper.readValue(json, IRequest::class.java) as PgCreateRequest
+        val obj = apiMapper.readValue(json, IProductGroupRequest::class.java) as PgCreateRequest
 
         assertEquals(request, obj)
     }

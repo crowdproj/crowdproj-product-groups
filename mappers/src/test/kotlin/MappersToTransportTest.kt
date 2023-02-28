@@ -1,8 +1,7 @@
-import models.*
+import com.crowdproj.marketplace.product.groups.api.models.*
+import com.crowdproj.marketplace.product.groups.common.ProductGroupContext
+import com.crowdproj.marketplace.product.groups.common.models.*
 import org.junit.Test
-import ru.otus.otuskotlin.marketplace.api.v1.models.PgCreateResponse
-import ru.otus.otuskotlin.marketplace.api.v1.models.PgDeleteResponse
-import ru.otus.otuskotlin.marketplace.api.v1.models.PgUpdateResponse
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

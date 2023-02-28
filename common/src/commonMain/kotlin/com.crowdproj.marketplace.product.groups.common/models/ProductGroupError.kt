@@ -1,4 +1,4 @@
-package models
+package com.crowdproj.marketplace.product.groups.common.models
 
 data class ProductGroupError(
     val code: String = "",

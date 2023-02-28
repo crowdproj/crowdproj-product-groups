@@ -1,9 +1,10 @@
-import exceptions.UnknownRequestClass
-import models.*
-import ru.otus.otuskotlin.marketplace.api.v1.models.*
-import stubs.ProductGroupStubs
+import com.crowdproj.marketplace.product.groups.api.models.*
+import com.crowdproj.marketplace.product.groups.common.ProductGroupContext
+import com.crowdproj.marketplace.product.groups.common.models.*
+import com.crowdproj.marketplace.product.groups.mappers.exceptions.UnknownRequestClass
+import com.crowdproj.marketplace.product.groups.common.stubs.ProductGroupStubs
 
-fun ProductGroupContext.fromTransport(request: IRequest) = when (request) {
+fun ProductGroupContext.fromTransport(request: IProductGroupRequest) = when (request) {
     is PgCreateRequest -> fromTransport(request)
     is PgReadRequest -> fromTransport(request)
     is PgUpdateRequest -> fromTransport(request)
@@ -12,7 +13,7 @@ fun ProductGroupContext.fromTransport(request: IRequest) = when (request) {
     else -> throw UnknownRequestClass(request.javaClass)
 }
 
-private fun IRequest?.requestId() = this?.requestId?.let { ProductGroupRequestId(it) } ?: ProductGroupRequestId.NONE
+private fun IProductGroupRequest?.requestId() = this?.requestId?.let { ProductGroupRequestId(it) } ?: ProductGroupRequestId.NONE
 private fun String?.toPgId() = this?.let { ProductGroupId(it) } ?: ProductGroupId.NONE
 private fun String?.toPgWithId() = ProductGroup(id = this.toPgId())
 
