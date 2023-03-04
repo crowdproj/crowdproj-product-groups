@@ -18,4 +18,4 @@ pluginManagement {
 
 include("product-group-api-v1")
 include("product-group-common")
-include("product-group-common")
+include("product-group-mapper")
