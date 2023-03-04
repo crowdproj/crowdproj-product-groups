@@ -1,6 +1,6 @@
 package ru.otus.otuskotlin.marketplace.api.v2
 
-import com.crowdproj.marketplace.product.groups.api.v1.models.*
+import com.crowdproj.marketplace.product.group.api.v1.models.*
 
 class ResponseConstants {
 

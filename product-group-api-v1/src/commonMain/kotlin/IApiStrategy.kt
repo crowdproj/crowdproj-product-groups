@@ -1,4 +1,4 @@
-package com.crowdproj.marketplace.product.groups.api.v1
+package com.crowdproj.marketplace.product.group.api.v1
 
 import kotlinx.serialization.KSerializer
 import kotlin.reflect.KClass

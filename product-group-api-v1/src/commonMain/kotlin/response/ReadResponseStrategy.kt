@@ -1,7 +1,7 @@
-package com.crowdproj.marketplace.product.groups.api.v1.response
+package com.crowdproj.marketplace.product.group.api.v1.response
 
-import com.crowdproj.marketplace.product.groups.api.v1.models.IProductGroupResponse
-import com.crowdproj.marketplace.product.groups.api.v1.models.ProductGroupReadResponse
+import com.crowdproj.marketplace.product.group.api.v1.models.IProductGroupResponse
+import com.crowdproj.marketplace.product.group.api.v1.models.ProductGroupReadResponse
 import kotlinx.serialization.KSerializer
 import kotlin.reflect.KClass
 

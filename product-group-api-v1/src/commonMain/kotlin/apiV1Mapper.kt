@@ -1,6 +1,6 @@
-package com.crowdproj.marketplace.product.groups.api.v1
+package com.crowdproj.marketplace.product.group.api.v1
 
-import com.crowdproj.marketplace.product.groups.api.v1.models.*
+import com.crowdproj.marketplace.product.group.api.v1.models.*
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.json.Json

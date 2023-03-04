@@ -1,7 +1,7 @@
-package com.crowdproj.marketplace.product.groups.api.v1.request
+package com.crowdproj.marketplace.product.group.api.v1.request
 
-import com.crowdproj.marketplace.product.groups.api.v1.models.IProductGroupRequest
-import com.crowdproj.marketplace.product.groups.api.v1.models.ProductGroupDeleteRequest
+import com.crowdproj.marketplace.product.group.api.v1.models.IProductGroupRequest
+import com.crowdproj.marketplace.product.group.api.v1.models.ProductGroupDeleteRequest
 import kotlinx.serialization.KSerializer
 import kotlin.reflect.KClass
 

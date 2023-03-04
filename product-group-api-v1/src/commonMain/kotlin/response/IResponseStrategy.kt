@@ -1,7 +1,7 @@
-package com.crowdproj.marketplace.product.groups.api.v1.response
+package com.crowdproj.marketplace.product.group.api.v1.response
 
-import com.crowdproj.marketplace.product.groups.api.v1.IApiStrategy
-import com.crowdproj.marketplace.product.groups.api.v1.models.IProductGroupResponse
+import com.crowdproj.marketplace.product.group.api.v1.IApiStrategy
+import com.crowdproj.marketplace.product.group.api.v1.models.IProductGroupResponse
 
 
 sealed interface IResponseStrategy: IApiStrategy<IProductGroupResponse> {
