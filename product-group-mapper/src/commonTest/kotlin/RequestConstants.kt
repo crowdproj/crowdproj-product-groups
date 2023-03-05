@@ -1,4 +1,4 @@
-package com.crowdproj.marketplace.product.group.api.v1
+package com.crowdproj.marketplace.product.group.mapper
 
 import com.crowdproj.marketplace.product.group.api.v1.models.*
 

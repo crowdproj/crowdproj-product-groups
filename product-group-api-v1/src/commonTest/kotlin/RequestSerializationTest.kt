@@ -1,6 +1,5 @@
-package ru.otus.otuskotlin.marketplace.api.v2
+package com.crowdproj.marketplace.product.group.api.v1
 
-import com.crowdproj.marketplace.product.group.api.v1.apiV1Mapper
 import com.crowdproj.marketplace.product.group.api.v1.models.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
