@@ -19,7 +19,7 @@ fun PrgrpContext.fromTransport(request: IProductGroupRequest) = when (request) {
 private fun String?.toGroupId() = this?.let { PrgrpGroupId(it) } ?: PrgrpGroupId.NONE
 private fun String?.toGroupWithId() = PrgrpGroup(id = this.toGroupId())
 private fun IProductGroupRequest?.requestId() = this?.requestId?.let { PrgrpRequestId(it) } ?: PrgrpRequestId.NONE
-private fun String?.toPropertiesId() = this?.let { PrgrpPropertiesId(it) } ?: PrgrpPropertiesId.NONE
+private fun String?.toPropertiesId() = this?.let { PrgrpPropertyId(it) } ?: PrgrpPropertyId.NONE
 
 private fun ProductGroupDebug?.transportToWorkMode(): PrgrpWorkMode = when (this?.mode) {
     ProductGroupRequestDebugMode.PROD -> PrgrpWorkMode.PROD
@@ -86,13 +86,13 @@ private fun ProductGroupSearchFilter?.toInternal(): PrgrpGroupFilter = PrgrpGrou
 private fun ProductGroupCreateObject.toInternal(): PrgrpGroup = PrgrpGroup(
     name = this.name ?: "",
     description = this.description ?: "",
-    propertiesFkId = this.propertiesFkId.toPropertiesId()
+    properties = this.properties?.mapTo(mutableSetOf()){ it.toPropertiesId() } ?: mutableSetOf()
 )
 
 private fun ProductGroupUpdateObject.toInternal(): PrgrpGroup = PrgrpGroup(
     id = this.id.toGroupId(),
     name = this.name ?: "",
     description = this.description ?: "",
-    propertiesFkId = this.propertiesFkId.toPropertiesId()
+    properties = this.properties?.mapTo(mutableSetOf()){ it.toPropertiesId() } ?: mutableSetOf()
 )
 

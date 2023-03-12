@@ -4,10 +4,24 @@ plugins {
     kotlin("plugin.serialization")
 }
 
+val apiSpec: Configuration by configurations.creating
+dependencies {
+    apiSpec(
+        group = "com.crowdproj",
+        name = "specs-v0",
+        version = rootProject.version.toString(),
+        classifier = "openapi",
+        ext = "yaml"
+    )
+}
+
 kotlin {
     jvm { }
     linuxX64 { }
-    macosX64 { }
+
+    artifacts {
+
+    }
 
     sourceSets {
 
@@ -75,9 +89,28 @@ openApiGenerate {
     )
 }
 
+val getSpecs by tasks.creating {
+    doFirst {
+        copy {
+            from(apiSpec.asPath)
+            into("$buildDir")
+            rename { "base.yaml" }
+        }
+    }
+}
+
+tasks {
+    this.openApiGenerate {
+        dependsOn(getSpecs)
+    }
+}
+
 afterEvaluate {
     val openApiGenerate = tasks.getByName("openApiGenerate")
     tasks.filter { it.name.startsWith("compile") }.forEach {
+        it.dependsOn(openApiGenerate)
+    }
+    tasks.filter { it.name.endsWith("Elements") }.forEach {
         it.dependsOn(openApiGenerate)
     }
 }

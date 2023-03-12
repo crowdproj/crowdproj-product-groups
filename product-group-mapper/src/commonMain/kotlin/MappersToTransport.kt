@@ -61,7 +61,7 @@ private fun PrgrpGroup.toTransportGroup(): ProductGroupResponseObject = ProductG
     description = description.takeIf { it.isNotBlank() },
     ownerId = ownerId.takeIf { it != PrgrpUserId.NONE }?.asString(),
     permissions = permissionsClient.toTransportGroup(),
-    propertiesFkId = propertiesFkId.takeIf { it != PrgrpPropertiesId.NONE }?.asString(),
+    properties = properties.filter { it != PrgrpPropertyId.NONE }.mapTo(mutableSetOf()) { it.asString() }
 )
 
 private fun Set<PrgrpGroupPermissionClient>.toTransportGroup(): Set<ProductGroupPermissions>? = this

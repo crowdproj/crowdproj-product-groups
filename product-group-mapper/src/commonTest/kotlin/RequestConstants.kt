@@ -40,7 +40,7 @@ class RequestConstants {
             group = ProductGroupUpdateObject(
                 name = "update group",
                 description = "description",
-                propertiesFkId = "1",
+                properties = setOf("1"),
                 id = "1234",
                 lock = "yes",
             )

@@ -48,7 +48,7 @@ class RequestSerializationTest {
         assertContains(json, Regex("\"stub\":\\s*\"badName\""))
         assertContains(json, Regex("\"name\":\\s*\"update group\""))
         assertContains(json, Regex("\"description\":\\s*\"description\""))
-        assertContains(json, Regex("\"propertiesFkId\":\\s*\"1\""))
+        assertContains(json, Regex(""""properties":(\[\"1\"\])"""))
         assertContains(json, Regex("\"id\":\\s*\"1234\""))
         assertContains(json, Regex("\"lock\":\\s*\"yes\""))
 

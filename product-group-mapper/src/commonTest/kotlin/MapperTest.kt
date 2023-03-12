@@ -44,7 +44,7 @@ class MapperTest {
         assertEquals("group title", context.groupRequest.name)
         assertEquals(PrgrpGroupId.NONE, context.groupRequest.id)
         assertEquals(PrgrpUserId.NONE, context.groupRequest.ownerId)
-        assertEquals(PrgrpPropertiesId.NONE, context.groupRequest.propertiesFkId)
+        assertEquals(mutableSetOf(), context.groupRequest.properties)
     }
 
     @Test
@@ -59,7 +59,7 @@ class MapperTest {
         assertEquals("", context.groupRequest.name)
         assertEquals("1234", context.groupRequest.id.asString())
         assertEquals(PrgrpUserId.NONE, context.groupRequest.ownerId)
-        assertEquals(PrgrpPropertiesId.NONE, context.groupRequest.propertiesFkId)
+        assertEquals(mutableSetOf(), context.groupRequest.properties)
     }
 
     @Test
@@ -74,7 +74,7 @@ class MapperTest {
         assertEquals("update group", context.groupRequest.name)
         assertEquals("1234", context.groupRequest.id.asString())
         assertEquals(PrgrpUserId.NONE, context.groupRequest.ownerId)
-        assertEquals("1", context.groupRequest.propertiesFkId.asString())
+        assertEquals("1", context.groupRequest.properties.first().asString())
     }
 
     @Test
@@ -89,7 +89,7 @@ class MapperTest {
         assertEquals("", context.groupRequest.name)
         assertEquals("1234", context.groupRequest.id.asString())
         assertEquals(PrgrpUserId.NONE, context.groupRequest.ownerId)
-        assertEquals(PrgrpPropertiesId.NONE, context.groupRequest.propertiesFkId)
+        assertEquals(mutableSetOf(), context.groupRequest.properties)
     }
 
     @Test
@@ -104,7 +104,7 @@ class MapperTest {
         assertEquals("", context.groupRequest.name)
         assertEquals(PrgrpGroupId.NONE, context.groupRequest.id)
         assertEquals(PrgrpUserId.NONE, context.groupRequest.ownerId)
-        assertEquals(PrgrpPropertiesId.NONE, context.groupRequest.propertiesFkId)
+        assertEquals(mutableSetOf(), context.groupRequest.properties)
     }
 
     @Test

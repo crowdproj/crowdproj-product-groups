@@ -5,7 +5,7 @@ import com.crowdproj.marketplace.product.group.api.v1.models.*
 class ResponseConstants {
 
     companion object {
-        private val error = Error("code", "group", "field", "message")
+        private val error = Error(code = "code", group = "group", field = "field", message = "message")
 
         val productGroupCreateResponse: IProductGroupResponse = ProductGroupCreateResponse(
             responseType = "create",

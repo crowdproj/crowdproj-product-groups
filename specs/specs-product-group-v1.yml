@@ -190,7 +190,7 @@ components:
     ProductGroupLock:
       type: string
       description: A version of optimistic locking
-    PropertiesId:
+    PropertyId:
       type: string
       description: Product group properties identification to which the group belongs
 
@@ -204,8 +204,11 @@ components:
         description:
           type: string
           description: Description of a product group
-        propertiesFkId:
-          $ref: '#/components/schemas/PropertiesId'
+        properties:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/PropertyId'
 
     ProductGroupCreateObject:
       allOf:

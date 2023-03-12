@@ -5,6 +5,6 @@ data class PrgrpGroup(
     var name: String = "",
     var description: String = "",
     var ownerId: PrgrpUserId = PrgrpUserId.NONE,
-    var propertiesFkId: PrgrpPropertiesId = PrgrpPropertiesId.NONE,
+    var properties: MutableSet<PrgrpPropertyId> = mutableSetOf(),
     val permissionsClient: MutableSet<PrgrpGroupPermissionClient> = mutableSetOf()
 )
