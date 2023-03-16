@@ -17,35 +17,35 @@ fun PrgrpContext.toTransportGroup(): IProductGroupResponse = when (val cmd = com
 
 fun PrgrpContext.toTransportCreate() = ProductGroupCreateResponse(
     requestId = this.requestId.asString().takeIf { it.isNotBlank() },
-    result = if (state == PrgrpState.RUNNING) ProductGroupResponseResult.SUCCESS else ProductGroupResponseResult.ERROR,
+    result = if (state == PrgrpState.RUNNING) ResponseResult.SUCCESS else ResponseResult.ERROR,
     errors = errors.toTransportErrors(),
     group = groupResponse.toTransportGroup()
 )
 
 fun PrgrpContext.toTransportRead() = ProductGroupReadResponse(
     requestId = this.requestId.asString().takeIf { it.isNotBlank() },
-    result = if (state == PrgrpState.RUNNING) ProductGroupResponseResult.SUCCESS else ProductGroupResponseResult.ERROR,
+    result = if (state == PrgrpState.RUNNING) ResponseResult.SUCCESS else ResponseResult.ERROR,
     errors = errors.toTransportErrors(),
     group = groupResponse.toTransportGroup()
 )
 
 fun PrgrpContext.toTransportUpdate() = ProductGroupUpdateResponse(
     requestId = this.requestId.asString().takeIf { it.isNotBlank() },
-    result = if (state == PrgrpState.RUNNING) ProductGroupResponseResult.SUCCESS else ProductGroupResponseResult.ERROR,
+    result = if (state == PrgrpState.RUNNING) ResponseResult.SUCCESS else ResponseResult.ERROR,
     errors = errors.toTransportErrors(),
     group = groupResponse.toTransportGroup()
 )
 
 fun PrgrpContext.toTransportDelete() = ProductGroupDeleteResponse(
     requestId = this.requestId.asString().takeIf { it.isNotBlank() },
-    result = if (state == PrgrpState.RUNNING) ProductGroupResponseResult.SUCCESS else ProductGroupResponseResult.ERROR,
+    result = if (state == PrgrpState.RUNNING) ResponseResult.SUCCESS else ResponseResult.ERROR,
     errors = errors.toTransportErrors(),
     group = groupResponse.toTransportGroup()
 )
 
 fun PrgrpContext.toTransportSearch() = ProductGroupSearchResponse(
     requestId = this.requestId.asString().takeIf { it.isNotBlank() },
-    result = if (state == PrgrpState.RUNNING) ProductGroupResponseResult.SUCCESS else ProductGroupResponseResult.ERROR,
+    result = if (state == PrgrpState.RUNNING) ResponseResult.SUCCESS else ResponseResult.ERROR,
     errors = errors.toTransportErrors(),
     groups = groupsResponse.toTransportGroup()
 )
@@ -87,5 +87,6 @@ private fun PrgrpError.toTransportGroup() = Error(
     code = code.takeIf { it.isNotBlank() },
     group = group.takeIf { it.isNotBlank() },
     field = field.takeIf { it.isNotBlank() },
-    message = message.takeIf { it.isNotBlank() },
+    title = title.takeIf { it.isNotBlank() },
+    description = description.takeIf { it.isNotBlank() }
 )

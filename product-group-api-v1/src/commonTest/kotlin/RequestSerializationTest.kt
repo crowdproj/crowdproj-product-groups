@@ -16,7 +16,7 @@ class RequestSerializationTest {
 
         assertContains(json, Regex("\"name\":\\s*\"group title\""))
         assertContains(json, Regex("\"mode\":\\s*\"stub\""))
-        assertContains(json, Regex("\"stub\":\\s*\"badName\""))
+        assertContains(json, Regex("\"stub\":\\s*\"badId\""))
         assertContains(json, Regex("\"requestType\":\\s*\"create\""))
         assertContains(json, Regex("\"requestId\":\\s*\"123\""))
         assertContains(json, Regex("\"description\":\\s*\"product group description\""))
@@ -29,7 +29,7 @@ class RequestSerializationTest {
         println(json)
 
         assertContains(json, Regex("\"mode\":\\s*\"stub\""))
-        assertContains(json, Regex("\"stub\":\\s*\"badName\""))
+        assertContains(json, Regex("\"stub\":\\s*\"badId\""))
         assertContains(json, Regex("\"requestType\":\\s*\"delete\""))
         assertContains(json, Regex("\"requestId\":\\s*\"123\""))
         assertContains(json, Regex("\"id\":\\s*\"1234\""))
@@ -45,10 +45,10 @@ class RequestSerializationTest {
         assertContains(json, Regex("\"requestType\":\\s*\"update\""))
         assertContains(json, Regex("\"requestId\":\\s*\"123\""))
         assertContains(json, Regex("\"mode\":\\s*\"stub\""))
-        assertContains(json, Regex("\"stub\":\\s*\"badName\""))
+        assertContains(json, Regex("\"stub\":\\s*\"badId\""))
         assertContains(json, Regex("\"name\":\\s*\"update group\""))
         assertContains(json, Regex("\"description\":\\s*\"description\""))
-        assertContains(json, Regex(""""properties":(\[\"1\"\])"""))
+        assertContains(json, Regex(""""properties":(\["1"])"""))
         assertContains(json, Regex("\"id\":\\s*\"1234\""))
         assertContains(json, Regex("\"lock\":\\s*\"yes\""))
 
@@ -61,7 +61,7 @@ class RequestSerializationTest {
         println(json)
 
         assertContains(json, Regex("\"mode\":\\s*\"stub\""))
-        assertContains(json, Regex("\"stub\":\\s*\"badName\""))
+        assertContains(json, Regex("\"stub\":\\s*\"badId\""))
         assertContains(json, Regex("\"requestType\":\\s*\"read\""))
         assertContains(json, Regex("\"requestId\":\\s*\"123\""))
         assertContains(json, Regex("\"id\":\\s*\"1234\""))
@@ -75,7 +75,7 @@ class RequestSerializationTest {
         println(json)
 
         assertContains(json, Regex("\"mode\":\\s*\"stub\""))
-        assertContains(json, Regex("\"stub\":\\s*\"badName\""))
+        assertContains(json, Regex("\"stub\":\\s*\"badId\""))
         assertContains(json, Regex("\"requestType\":\\s*\"search\""))
         assertContains(json, Regex("\"requestId\":\\s*\"123\""))
         assertContains(json, Regex("\"searchString\":\\s*\"TV\""))

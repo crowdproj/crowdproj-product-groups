@@ -21,21 +21,17 @@ private fun String?.toGroupWithId() = PrgrpGroup(id = this.toGroupId())
 private fun IProductGroupRequest?.requestId() = this?.requestId?.let { PrgrpRequestId(it) } ?: PrgrpRequestId.NONE
 private fun String?.toPropertiesId() = this?.let { PrgrpPropertyId(it) } ?: PrgrpPropertyId.NONE
 
-private fun ProductGroupDebug?.transportToWorkMode(): PrgrpWorkMode = when (this?.mode) {
-    ProductGroupRequestDebugMode.PROD -> PrgrpWorkMode.PROD
-    ProductGroupRequestDebugMode.TEST -> PrgrpWorkMode.TEST
-    ProductGroupRequestDebugMode.STUB -> PrgrpWorkMode.STUB
+private fun CpBaseDebug?.transportToWorkMode(): PrgrpWorkMode = when (this?.mode) {
+    CpRequestDebugMode.PROD -> PrgrpWorkMode.PROD
+    CpRequestDebugMode.TEST -> PrgrpWorkMode.TEST
+    CpRequestDebugMode.STUB -> PrgrpWorkMode.STUB
     null -> PrgrpWorkMode.PROD
 }
 
-private fun ProductGroupDebug?.transportToStubCase(): PrgrpStubs = when (this?.stub) {
-    ProductGroupRequestDebugStubs.SUCCESS -> PrgrpStubs.SUCCESS
-    ProductGroupRequestDebugStubs.NOT_FOUND -> PrgrpStubs.NOT_FOUND
-    ProductGroupRequestDebugStubs.BAD_ID -> PrgrpStubs.BAD_ID
-    ProductGroupRequestDebugStubs.BAD_NAME -> PrgrpStubs.BAD_NAME
-    ProductGroupRequestDebugStubs.BAD_DESCRIPTION -> PrgrpStubs.BAD_DESCRIPTION
-    ProductGroupRequestDebugStubs.CANNOT_DELETE -> PrgrpStubs.CANNOT_DELETE
-    ProductGroupRequestDebugStubs.BAD_SEARCH_STRING -> PrgrpStubs.BAD_SEARCH_STRING
+private fun CpBaseDebug?.transportToStubCase(): PrgrpStubs = when (this?.stub) {
+    CpRequestDebugStubs.SUCCESS -> PrgrpStubs.SUCCESS
+    CpRequestDebugStubs.NOT_FOUND -> PrgrpStubs.NOT_FOUND
+    CpRequestDebugStubs.BAD_ID -> PrgrpStubs.BAD_ID
     null -> PrgrpStubs.NONE
 }
 
