@@ -9,7 +9,7 @@ dependencies {
     apiSpec(
         group = "com.crowdproj",
         name = "specs-v0",
-        version = rootProject.version.toString(),
+        version = "0.0.3",
         classifier = "openapi",
         ext = "yaml"
     )

@@ -117,73 +117,45 @@ components:
   schemas:
 
     IProductGroupRequest:
-      type: object
-      description: Basic interface for all requests
-      properties:
-        requestType:
-          type: string
-          description: A field-discriminator for calculating a type of request
-          example: create
-        requestId:
-          type: string
-          description: Identification of debugs request
-      discriminator:
-        propertyName: requestType
-        mapping:
-          create: '#/components/schemas/ProductGroupCreateRequest'
-          read: '#/components/schemas/ProductGroupReadRequest'
-          update: '#/components/schemas/ProductGroupUpdateRequest'
-          delete: '#/components/schemas/ProductGroupDeleteRequest'
-          search: '#/components/schemas/ProductGroupSearchRequest'
+      allOf:
+        - $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/IRequest'
+        - type: object
+          discriminator:
+            propertyName: requestType
+            mapping:
+              create: '#/components/schemas/ProductGroupCreateRequest'
+              read: '#/components/schemas/ProductGroupReadRequest'
+              update: '#/components/schemas/ProductGroupUpdateRequest'
+              delete: '#/components/schemas/ProductGroupDeleteRequest'
+              search: '#/components/schemas/ProductGroupSearchRequest'
+
 
     Error:
-      type: object
-      properties:
-        code:
-          type: string
-        group:
-          type: string
-        field:
-          type: string
-        message:
-          type: string
+      $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/Error'
+
+    RequestId:
+      $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/RequestId'
 
     ProductGroupResponseResult:
-      type: string
-      enum:
-        - success
-        - error
+      $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/ResponseResult'
 
     IProductGroupResponse:
-      type: object
-      description: Basic interface for all responses
-      properties:
-        responseType:
-          type: string
-          description: A field-discriminator for calculating a type of response
-          example: create
-        requestId:
-          type: string
-          description: An identification of debugs response
-        result:
-          $ref: '#/components/schemas/ProductGroupResponseResult'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
+      allOf:
+        - $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/IResponse'
+        - type: object
+          discriminator:
+            propertyName: responseType
+            mapping:
+              create: '#/components/schemas/ProductGroupCreateResponse'
+              read: '#/components/schemas/ProductGroupReadResponse'
+              update: '#/components/schemas/ProductGroupUpdateResponse'
+              delete: '#/components/schemas/ProductGroupDeleteResponse'
+              search: '#/components/schemas/ProductGroupSearchResponse'
 
-      discriminator:
-        propertyName: responseType
-        mapping:
-          create: '#/components/schemas/ProductGroupCreateResponse'
-          read: '#/components/schemas/ProductGroupReadResponse'
-          update: '#/components/schemas/ProductGroupUpdateResponse'
-          delete: '#/components/schemas/ProductGroupDeleteResponse'
-          search: '#/components/schemas/ProductGroupSearchResponse'
 
     UserId:
-      type: string
-      description: A user identification
+      $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/UserId'
+
     ProductGroupId:
       type: string
       description: A product group identification
@@ -217,7 +189,7 @@ components:
     ProductGroupCreateRequest:
       allOf:
         - $ref: '#/components/schemas/IProductGroupRequest'
-        - $ref: '#/components/schemas/ProductGroupRequestDebug'
+        - $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/CpRequestDebug'
         - type: object
           properties:
             group:
@@ -233,7 +205,7 @@ components:
     ProductGroupReadRequest:
       allOf:
         - $ref: '#/components/schemas/IProductGroupRequest'
-        - $ref: '#/components/schemas/ProductGroupRequestDebug'
+        - $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/CpRequestDebug'
         - type: object
           properties:
             group:
@@ -252,7 +224,7 @@ components:
     ProductGroupUpdateRequest:
       allOf:
         - $ref: '#/components/schemas/IProductGroupRequest'
-        - $ref: '#/components/schemas/ProductGroupRequestDebug'
+        - $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/CpRequestDebug'
         - type: object
           properties:
             group:
@@ -270,7 +242,7 @@ components:
     ProductGroupDeleteRequest:
       allOf:
         - $ref: '#/components/schemas/IProductGroupRequest'
-        - $ref: '#/components/schemas/ProductGroupRequestDebug'
+        - $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/CpRequestDebug'
         - type: object
           properties:
             group:
@@ -287,7 +259,7 @@ components:
     ProductGroupSearchRequest:
       allOf:
         - $ref: '#/components/schemas/IProductGroupRequest'
-        - $ref: '#/components/schemas/ProductGroupRequestDebug'
+        - $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/CpRequestDebug'
         - type: object
           properties:
             productGroupFilter:
@@ -364,37 +336,3 @@ components:
       allOf:
         - $ref: '#/components/schemas/IProductGroupResponse'
         - $ref: '#/components/schemas/ProductGroupResponseMulti'
-
-    # STUBS ======================
-    ProductGroupRequestDebugMode:
-      type: string
-      enum:
-        - prod
-        - test
-        - stub
-
-    ProductGroupRequestDebug:
-      type: object
-      properties:
-        debug:
-          $ref: '#/components/schemas/ProductGroupDebug'
-
-    ProductGroupDebug:
-      type: object
-      properties:
-        mode:
-          $ref: '#/components/schemas/ProductGroupRequestDebugMode'
-        stub:
-          $ref: '#/components/schemas/ProductGroupRequestDebugStubs'
-
-    ProductGroupRequestDebugStubs:
-      type: string
-      description: Enumerations of all stubs
-      enum:
-        - success
-        - notFound
-        - badId
-        - badName
-        - badDescription
-        - cannotDelete
-        - badSearchString

@@ -7,9 +7,9 @@ class RequestConstants {
         val productGroupCreateRequest: IProductGroupRequest = ProductGroupCreateRequest(
             requestType = "create",
             requestId = "123",
-            debug = ProductGroupDebug(
-                mode = ProductGroupRequestDebugMode.STUB,
-                stub = ProductGroupRequestDebugStubs.BAD_NAME
+            debug = CpBaseDebug(
+                mode = CpRequestDebugMode.STUB,
+                stub = CpRequestDebugStubs.BAD_ID
             ),
             group = ProductGroupCreateObject(
                 name = "group title",
@@ -20,9 +20,9 @@ class RequestConstants {
         val productGroupDeleteRequest: IProductGroupRequest = ProductGroupDeleteRequest(
             requestType = "delete",
             requestId = "123",
-            debug = ProductGroupDebug(
-                mode = ProductGroupRequestDebugMode.STUB,
-                stub = ProductGroupRequestDebugStubs.BAD_NAME
+            debug = CpBaseDebug(
+                mode = CpRequestDebugMode.STUB,
+                stub = CpRequestDebugStubs.BAD_ID
             ),
             group = ProductGroupDeleteObject(
                 id = "1234",
@@ -33,9 +33,9 @@ class RequestConstants {
         val productGroupUpdateRequest: IProductGroupRequest = ProductGroupUpdateRequest(
             requestType = "update",
             requestId = "123",
-            debug = ProductGroupDebug(
-                mode = ProductGroupRequestDebugMode.STUB,
-                stub = ProductGroupRequestDebugStubs.BAD_NAME
+            debug = CpBaseDebug(
+                mode = CpRequestDebugMode.STUB,
+                stub = CpRequestDebugStubs.BAD_ID
             ),
             group = ProductGroupUpdateObject(
                 name = "update group",
@@ -49,9 +49,9 @@ class RequestConstants {
         val productGroupReadRequest: IProductGroupRequest = ProductGroupReadRequest(
             requestType = "read",
             requestId = "123",
-            debug = ProductGroupDebug(
-                mode = ProductGroupRequestDebugMode.STUB,
-                stub = ProductGroupRequestDebugStubs.BAD_NAME
+            debug = CpBaseDebug(
+                mode = CpRequestDebugMode.STUB,
+                stub = CpRequestDebugStubs.BAD_ID
             ),
             group = ProductGroupReadObject(
                 id = "1234",
@@ -61,9 +61,9 @@ class RequestConstants {
         val productGroupSearchRequest: IProductGroupRequest = ProductGroupSearchRequest(
             requestType = "search",
             requestId = "123",
-            debug = ProductGroupDebug(
-                mode = ProductGroupRequestDebugMode.STUB,
-                stub = ProductGroupRequestDebugStubs.BAD_NAME
+            debug = CpBaseDebug(
+                mode = CpRequestDebugMode.STUB,
+                stub = CpRequestDebugStubs.BAD_ID
             ),
             productGroupFilter = ProductGroupSearchFilter(
                 searchString = "TV",

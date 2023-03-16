@@ -21,7 +21,7 @@ class MapperTest {
                     code = "err",
                     group = "request",
                     field = "title",
-                    message = "wrong title",
+                    title = "wrong title",
                 )
             ),
             groupsResponse = mutableListOf(PrgrpGroup(
@@ -37,7 +37,7 @@ class MapperTest {
         val context = PrgrpContext()
         context.fromTransport(RequestConstants.productGroupCreateRequest)
 
-        assertEquals(PrgrpStubs.BAD_NAME, context.stubCase)
+        assertEquals(PrgrpStubs.BAD_ID, context.stubCase)
         assertEquals(PrgrpWorkMode.STUB, context.workMode)
         assertEquals(PrgrpCommand.CREATE, context.command)
         assertEquals("123", context.requestId.asString())
@@ -52,7 +52,7 @@ class MapperTest {
         val context = PrgrpContext()
         context.fromTransport(RequestConstants.productGroupDeleteRequest)
 
-        assertEquals(PrgrpStubs.BAD_NAME, context.stubCase)
+        assertEquals(PrgrpStubs.BAD_ID, context.stubCase)
         assertEquals(PrgrpWorkMode.STUB, context.workMode)
         assertEquals(PrgrpCommand.DELETE, context.command)
         assertEquals("123", context.requestId.asString())
@@ -67,7 +67,7 @@ class MapperTest {
         val context = PrgrpContext()
         context.fromTransport(RequestConstants.productGroupUpdateRequest)
 
-        assertEquals(PrgrpStubs.BAD_NAME, context.stubCase)
+        assertEquals(PrgrpStubs.BAD_ID, context.stubCase)
         assertEquals(PrgrpWorkMode.STUB, context.workMode)
         assertEquals(PrgrpCommand.UPDATE, context.command)
         assertEquals("123", context.requestId.asString())
@@ -82,7 +82,7 @@ class MapperTest {
         val context = PrgrpContext()
         context.fromTransport(RequestConstants.productGroupReadRequest)
 
-        assertEquals(PrgrpStubs.BAD_NAME, context.stubCase)
+        assertEquals(PrgrpStubs.BAD_ID, context.stubCase)
         assertEquals(PrgrpWorkMode.STUB, context.workMode)
         assertEquals(PrgrpCommand.READ, context.command)
         assertEquals("123", context.requestId.asString())
@@ -97,7 +97,7 @@ class MapperTest {
         val context = PrgrpContext()
         context.fromTransport(RequestConstants.productGroupSearchRequest)
 
-        assertEquals(PrgrpStubs.BAD_NAME, context.stubCase)
+        assertEquals(PrgrpStubs.BAD_ID, context.stubCase)
         assertEquals(PrgrpWorkMode.STUB, context.workMode)
         assertEquals(PrgrpCommand.SEARCH, context.command)
         assertEquals("123", context.requestId.asString())
@@ -120,7 +120,7 @@ class MapperTest {
         assertEquals("err", resCreate.errors?.firstOrNull()?.code)
         assertEquals("request", resCreate.errors?.firstOrNull()?.group)
         assertEquals("title", resCreate.errors?.firstOrNull()?.field)
-        assertEquals("wrong title", resCreate.errors?.firstOrNull()?.message)
+        assertEquals("wrong title", resCreate.errors?.firstOrNull()?.title)
     }
 
     @Test
@@ -136,7 +136,7 @@ class MapperTest {
         assertEquals("err", resDelete.errors?.firstOrNull()?.code)
         assertEquals("request", resDelete.errors?.firstOrNull()?.group)
         assertEquals("title", resDelete.errors?.firstOrNull()?.field)
-        assertEquals("wrong title", resDelete.errors?.firstOrNull()?.message)
+        assertEquals("wrong title", resDelete.errors?.firstOrNull()?.title)
     }
 
     @Test
@@ -152,7 +152,7 @@ class MapperTest {
         assertEquals("err", resUpdate.errors?.firstOrNull()?.code)
         assertEquals("request", resUpdate.errors?.firstOrNull()?.group)
         assertEquals("title", resUpdate.errors?.firstOrNull()?.field)
-        assertEquals("wrong title", resUpdate.errors?.firstOrNull()?.message)
+        assertEquals("wrong title", resUpdate.errors?.firstOrNull()?.title)
     }
 
     @Test
@@ -168,7 +168,7 @@ class MapperTest {
         assertEquals("err", resRead.errors?.firstOrNull()?.code)
         assertEquals("request", resRead.errors?.firstOrNull()?.group)
         assertEquals("title", resRead.errors?.firstOrNull()?.field)
-        assertEquals("wrong title", resRead.errors?.firstOrNull()?.message)
+        assertEquals("wrong title", resRead.errors?.firstOrNull()?.title)
     }
 
     @Test
@@ -185,6 +185,6 @@ class MapperTest {
         assertEquals("err", resSearch.errors?.firstOrNull()?.code)
         assertEquals("request", resSearch.errors?.firstOrNull()?.group)
         assertEquals("title", resSearch.errors?.firstOrNull()?.field)
-        assertEquals("wrong title", resSearch.errors?.firstOrNull()?.message)
+        assertEquals("wrong title", resSearch.errors?.firstOrNull()?.title)
     }
 }

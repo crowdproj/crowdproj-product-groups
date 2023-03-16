@@ -5,13 +5,13 @@ import com.crowdproj.marketplace.product.group.api.v1.models.*
 class ResponseConstants {
 
     companion object {
-        private val error = Error(code = "code", group = "group", field = "field", message = "message")
+        private val error = Error(code = "code", group = "group", field = "field", title = "title", description = "description")
 
         val productGroupCreateResponse: IProductGroupResponse = ProductGroupCreateResponse(
             responseType = "create",
             requestId = "123",
             errors = listOf(error),
-            result = ProductGroupResponseResult.SUCCESS,
+            result = ResponseResult.SUCCESS,
             group = ProductGroupResponseObject(
                 name = "group title",
                 description = "product group description",
@@ -21,7 +21,7 @@ class ResponseConstants {
         val productGroupDeleteResponse: IProductGroupResponse = ProductGroupDeleteResponse(
             responseType = "delete",
             requestId = "123",
-            result = ProductGroupResponseResult.SUCCESS,
+            result = ResponseResult.SUCCESS,
             errors = listOf(error),
             group = ProductGroupResponseObject(
                 name = "group title",
@@ -32,7 +32,7 @@ class ResponseConstants {
         val productGroupUpdateResponse: IProductGroupResponse = ProductGroupUpdateResponse(
             responseType = "update",
             requestId = "123",
-            result = ProductGroupResponseResult.SUCCESS,
+            result = ResponseResult.SUCCESS,
             errors = listOf(error),
             group = ProductGroupResponseObject(
                 name = "group title",
@@ -43,7 +43,7 @@ class ResponseConstants {
         val productGroupReadResponse: IProductGroupResponse = ProductGroupReadResponse(
             responseType = "read",
             requestId = "123",
-            result = ProductGroupResponseResult.SUCCESS,
+            result = ResponseResult.SUCCESS,
             errors = listOf(error),
             group = ProductGroupResponseObject(
                 name = "group title",
@@ -54,7 +54,7 @@ class ResponseConstants {
         val productGroupSearchResponse: IProductGroupResponse = ProductGroupSearchResponse(
             responseType = "search",
             requestId = "123",
-            result = ProductGroupResponseResult.SUCCESS,
+            result = ResponseResult.SUCCESS,
             errors = listOf(error),
             groups = listOf(
                 ProductGroupResponseObject(
