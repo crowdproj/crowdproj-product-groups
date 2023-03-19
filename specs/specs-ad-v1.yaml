@@ -1,0 +1,411 @@
+openapi: 3.0.4
+info:
+  title: Product-group service
+  description: Product group management service
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/v1
+tags:
+  - name: pg
+    description: Группа товаров
+paths:
+  /pg/create:
+    post:
+      tags:
+        - pg
+      summary: Create pg
+      operationId: pgCreate
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PgCreateRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PgCreateResponse'
+  /pg/read:
+    post:
+      tags:
+        - pg
+      summary: Read pg
+      operationId: pgRead
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PgReadRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PgReadResponse'
+  /pg/update:
+    post:
+      tags:
+        - pg
+      summary: Update pg
+      operationId: pgUpdate
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PgUpdateRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PgUpdateResponse'
+  /pg/delete:
+    post:
+      tags:
+        - pg
+      summary: Delete pg
+      operationId: pgDelete
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PgDeleteRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PgDeleteResponse'
+  /pg/search:
+    post:
+      tags:
+        - pg
+      summary: Search pg
+      operationId: pgSearch
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PgSearchRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PgSearchResponse'
+
+components:
+  schemas:
+
+    IProductGroupRequest:
+      type: object
+      description: Базовый интерфейс для всех запросов
+      properties:
+        requestType:
+          type: string
+          description: Поле-дескриминатор для вычисления типа запроса
+          example: create
+        requestId:
+          type: string
+          description: Идентификатор запроса для отладки
+      discriminator:
+        propertyName: requestType
+        mapping:
+          create: '#/components/schemas/PgCreateRequest'
+          read:   '#/components/schemas/PgReadRequest'
+          update: '#/components/schemas/PgUpdateRequest'
+          delete: '#/components/schemas/PgDeleteRequest'
+          search: '#/components/schemas/PgSearchRequest'
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        group:
+          type: string
+        field:
+          type: string
+        message:
+          type: string
+
+    ResponseResult:
+      type: string
+      enum:
+        - success
+        - error
+
+    IProductGroupResponse:
+      type: object
+      description: Базовый интерфейс для всех ответов
+      properties:
+        responseType:
+          type: string
+          description: Поле-дескриминатор для вычисления типа ответа
+          example: create
+        requestId:
+          type: string
+          description: Идентификатор запроса для отладки
+        result:
+          $ref: '#/components/schemas/ResponseResult'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+
+      discriminator:
+        propertyName: responseType
+        mapping:
+          create: '#/components/schemas/PgCreateResponse'
+          read:   '#/components/schemas/PgReadResponse'
+          update: '#/components/schemas/PgUpdateResponse'
+          delete: '#/components/schemas/PgDeleteResponse'
+          search: '#/components/schemas/PgSearchResponse'
+          init: '#/components/schemas/PgInitResponse'
+
+    PgId:
+      type: string
+      description: Идентификатор группы товара
+    PgLock:
+      type: string
+      description: Версия оптимистичной блокировки
+
+    BasePg:
+      type: object
+      description: Объект описывает свойства, одинаковые для create и update
+      properties:
+        name:
+          type: string
+          description: Имя группы
+        description:
+          type: string
+          description: Описание группы
+        properties:
+          type: string
+          description: Свойства группы
+        deleted:
+          type: boolean
+          default: false
+          description: true если группа удалена
+
+
+    PgInitResponse:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupResponse'
+
+    PgCreateObject:
+      allOf:
+        - $ref: '#/components/schemas/BasePg'
+
+    PgCreateRequest:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/PgRequestDebug'
+        - type: object
+          properties:
+            pg:
+              $ref: '#/components/schemas/PgCreateObject'
+
+    PgReadObject:
+      allOf:
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/PgId'
+
+    PgReadRequest:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/PgRequestDebug'
+        - type: object
+          properties:
+            pg:
+              $ref: '#/components/schemas/PgReadObject'
+
+    PgUpdateObject:
+      allOf:
+        - $ref: '#/components/schemas/BasePg'
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/PgId'
+            lock:
+              $ref: '#/components/schemas/PgLock'
+
+    PgUpdateRequest:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/PgRequestDebug'
+        - type: object
+          properties:
+            pg:
+              $ref: '#/components/schemas/PgUpdateObject'
+
+    PgDeleteObject:
+      allOf:
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/PgId'
+            lock:
+              $ref: '#/components/schemas/PgLock'
+
+    PgDeleteRequest:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/PgRequestDebug'
+        - type: object
+          properties:
+            pg:
+              $ref: '#/components/schemas/PgDeleteObject'
+
+    PgSearchFilter:
+      type: object
+      description: Набор фильтров для поиска
+      properties:
+        id:
+          type: string
+          description: Поиск по идентификатору группы товаров
+        name:
+          type: string
+          description: Поиск по имени группы товаров
+        description:
+          type: string
+          description: Поиск по описанию группы товаров
+        property:
+          type: string
+          description: Поиск по свойству группы товаров
+        deleted:
+          type: boolean
+          description: Поиск по признаку удалено
+
+
+    PgSearchRequest:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupRequest'
+        - $ref: '#/components/schemas/PgRequestDebug'
+        - type: object
+          properties:
+            pgFilter:
+              $ref: '#/components/schemas/PgSearchFilter'
+
+    PgResponseObject:
+      allOf:
+        - $ref: '#/components/schemas/BasePg'
+        - type: object
+          description: Объект, который возвращается в ответе бэкенда
+          properties:
+            id:
+              $ref: '#/components/schemas/PgId'
+            lock:
+              $ref: '#/components/schemas/PgLock'
+            permissions:
+              type: array
+              uniqueItems: true
+              items:
+                $ref: '#/components/schemas/PgPermissions'
+
+    PgPermissions:
+      type: string
+      description: Доступы для клиента для операций над группой товаров
+      enum:
+        - read
+        - update
+        - delete
+
+    PgResponseSingle:
+      allOf:
+        - type: object
+          description: Ответ с одним объектом группы товаров
+          properties:
+            pg:
+              $ref: '#/components/schemas/PgResponseObject'
+
+    PgResponseMulti:
+      allOf:
+        - type: object
+          description: Список найденных объектов
+          properties:
+            pgs:
+              type: array
+              items:
+                $ref: '#/components/schemas/PgResponseObject'
+
+    PgCreateResponse:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/PgResponseSingle'
+
+    PgReadResponse:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/PgResponseSingle'
+
+    PgUpdateResponse:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/PgResponseSingle'
+
+    PgDeleteResponse:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/PgResponseSingle'
+
+    PgSearchResponse:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupResponse'
+        - $ref: '#/components/schemas/PgResponseMulti'
+
+    # STUBS ======================
+    PgRequestDebugMode:
+      type: string
+      enum:
+        - prod
+        - test
+        - stub
+
+    PgRequestDebug:
+      type: object
+      properties:
+        debug:
+          $ref: '#/components/schemas/PgDebug'
+
+    PgDebug:
+      type: object
+      properties:
+        mode:
+          $ref: '#/components/schemas/PgRequestDebugMode'
+        stub:
+          $ref: '#/components/schemas/PgRequestDebugStubs'
+
+    PgRequestDebugStubs:
+      type: string
+      description: Перечисления всех стабов
+      enum:
+        - success
+        - notFound
+        - badId
+        - badName
+        - badDescription
+        - badProperties
+        - cannotDelete
+        - badSearchString
