@@ -27,7 +27,7 @@ openApiGenerate {
     apiPackage.set("$openapiGroup.api")
     modelPackage.set("$openapiGroup.models")
     invokerPackage.set("$openapiGroup.invoker")
-    inputSpec.set("$rootDir/specs/specs-ad-v1.yaml")
+    inputSpec.set("$rootDir/specs/specs-pg-v1.yaml")
 
     /**
      * Здесь указываем, что нам нужны только модели, все остальное не нужно
