@@ -1,4 +1,4 @@
-package com.crowdproj.marketplace.product.groups.app.ktor.stubs
+package com.crowdproj.marketplace.product.groups.app.ktor
 
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
