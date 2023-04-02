@@ -12,6 +12,7 @@ sealed interface IResponseStrategy: IApiStrategy<IProductGroupResponse> {
             UpdateResponseStrategy,
             DeleteResponseStrategy,
             SearchResponseStrategy,
+            InitResponseStrategy,
         )
         val membersByDiscriminator = members.associateBy { it.discriminator }
         val membersByClazz = members.associateBy { it.clazz }

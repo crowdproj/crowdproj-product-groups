@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.marketplace.stubs
+package com.crowdproj.marketplace.product.group.app.ktor.stubs
 
 import com.crowdproj.marketplace.product.group.api.v1.apiV1Mapper
 import com.crowdproj.marketplace.product.group.api.v1.models.*

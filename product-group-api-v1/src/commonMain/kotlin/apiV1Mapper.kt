@@ -25,6 +25,10 @@ val apiV1Mapper = Json {
                 else -> null
             }
         }
+        polymorphicDefault(IProductGroupRequest::class) {
+            ProductGroupRequestSerializer
+        }
+
         polymorphicDefaultSerializer(IProductGroupResponse::class) {
             @Suppress("UNCHECKED_CAST")
             when(it) {
@@ -33,11 +37,19 @@ val apiV1Mapper = Json {
                 is ProductGroupUpdateResponse ->  ResponseSerializer(ProductGroupUpdateResponse.serializer()) as SerializationStrategy<IProductGroupResponse>
                 is ProductGroupDeleteResponse ->  ResponseSerializer(ProductGroupDeleteResponse.serializer()) as SerializationStrategy<IProductGroupResponse>
                 is ProductGroupSearchResponse ->  ResponseSerializer(ProductGroupSearchResponse.serializer()) as SerializationStrategy<IProductGroupResponse>
+                is ProductGroupInitResponse   ->  ResponseSerializer(ProductGroupInitResponse.serializer()) as SerializationStrategy<IProductGroupResponse>
                 else -> null
             }
+        }
+
+        polymorphicDefault(IProductGroupResponse::class) {
+            ProductGroupResponseSerializer
         }
 
         contextual(ProductGroupRequestSerializer)
         contextual(ProductGroupResponseSerializer)
     }
 }
+
+fun Json.encodeResponse(response: IProductGroupResponse): String = encodeToString(ProductGroupResponseSerializer, response)
+

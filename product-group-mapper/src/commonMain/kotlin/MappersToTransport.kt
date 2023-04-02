@@ -12,6 +12,7 @@ fun PrgrpContext.toTransportGroup(): IProductGroupResponse = when (val cmd = com
     PrgrpCommand.UPDATE -> toTransportUpdate()
     PrgrpCommand.DELETE -> toTransportDelete()
     PrgrpCommand.SEARCH -> toTransportSearch()
+
     PrgrpCommand.NONE -> throw UnknownPrgrpCommand(cmd)
 }
 
@@ -48,6 +49,13 @@ fun PrgrpContext.toTransportSearch() = ProductGroupSearchResponse(
     result = if (state == PrgrpState.RUNNING) ResponseResult.SUCCESS else ResponseResult.ERROR,
     errors = errors.toTransportErrors(),
     groups = groupsResponse.toTransportGroup()
+)
+
+
+fun PrgrpContext.toTransportInit() = ProductGroupInitResponse(
+    requestId = this.requestId.asString().takeIf { it.isNotBlank() },
+    result = ResponseResult.ERROR.takeIf { errors.isNotEmpty() } ?: ResponseResult.SUCCESS,
+    errors = errors.toTransportErrors(),
 )
 
 fun List<PrgrpGroup>.toTransportGroup(): List<ProductGroupResponseObject>? = this
