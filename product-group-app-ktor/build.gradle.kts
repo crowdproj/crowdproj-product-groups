@@ -28,14 +28,8 @@ plugins {
     id("io.ktor.plugin")
 }
 
-repositories {
-    maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ktor/eap") }
-}
-
 application {
-//    mainClass.set("io.ktor.server.netty.EngineMain")
-    mainClass.set("com.crowdproj.marketplace.product.group.app.ktor.ApplicationKt")
-   // mainClass.set("io.ktor.server.cio.EngineMain")
+    mainClass.set("io.ktor.server.cio.EngineMain")
 }
 
 kotlin {
@@ -63,8 +57,6 @@ kotlin {
                 implementation(kotlin("stdlib-common"))
                 api("org.jetbrains.kotlinx:kotlinx-datetime:$datetimeVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-serialization:$ktorVersion")
 
@@ -131,26 +123,6 @@ kotlin {
                 implementation(ktor("websockets", prefix = "client-"))
             }
         }
-    }
-}
-
-tasks {
-    val dockerJvmDockerfile by creating(Dockerfile::class) {
-        group = "docker"
-        from("openjdk:17")
-        copyFile("app.jar", "app.jar")
-        entryPoint("java", "-Xms256m", "-Xmx512m", "-jar", "/app.jar")
-    }
-    create("dockerBuildJvmImage", DockerBuildImage::class) {
-        group = "docker"
-        dependsOn(dockerJvmDockerfile, named("jvmJar"))
-        doFirst {
-            copy {
-                from(named("jvmJar"))
-                into("${project.buildDir}/docker/app.jar")
-            }
-        }
-        images.add("${project.name}:${project.version}")
     }
 }
 
