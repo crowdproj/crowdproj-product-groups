@@ -52,14 +52,18 @@ suspend fun WebSocketSession.wsHandler() {
 
             // If change request, response is sent to everyone
             if (context.isUpdatableCommand()) {
-                sessions.forEach {
-                    it.send(Frame.Text(result))
+                mutex.withLock {
+                    sessions.forEach {
+                        it.send(Frame.Text(result))
+                    }
                 }
             } else {
                 outgoing.send(Frame.Text(result))
             }
         } catch (_: ClosedReceiveChannelException) {
-            sessions.clear()
+            mutex.withLock {
+                sessions.clear()
+            }
         } catch (t: Throwable) {
             context.addError(t.asPrgrpError())
 
