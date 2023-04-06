@@ -15,13 +15,19 @@ import kotlinx.coroutines.channels.ClosedReceiveChannelException
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.decodeFromString
 import ru.otus.otuskotlin.marketplace.stubs.PrgrpStub
 
 val sessions = mutableSetOf<WebSocketSession>()
+val mutex = Mutex()
 
 suspend fun WebSocketSession.wsHandler() {
-    sessions.add(this)
+
+    mutex.withLock {
+        sessions.add(this)
+    }
 
     // Handle init request
     val ctx = PrgrpContext()
