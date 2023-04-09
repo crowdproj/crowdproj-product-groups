@@ -14,7 +14,7 @@ import kotlinx.serialization.json.jsonPrimitive
 val ProductGroupResponseSerializer = ResponseSerializer(ProductGroupResponseSerializerBase)
 
 private object ProductGroupResponseSerializerBase : JsonContentPolymorphicSerializer<IProductGroupResponse>(IProductGroupResponse::class) {
-    private const val discriminator = "requestType"
+    private const val discriminator = "responseType"
 
     override fun selectDeserializer(element: JsonElement): KSerializer<out IProductGroupResponse> {
 

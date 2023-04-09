@@ -75,6 +75,7 @@ fun PrgrpContext.fromTransport(request: ProductGroupSearchRequest) {
     stubCase = request.debug.transportToStubCase()
 }
 
+
 private fun ProductGroupSearchFilter?.toInternal(): PrgrpGroupFilter = PrgrpGroupFilter(
     searchString = this?.searchString ?: ""
 )

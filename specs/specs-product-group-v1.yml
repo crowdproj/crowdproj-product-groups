@@ -129,7 +129,6 @@ components:
               delete: '#/components/schemas/ProductGroupDeleteRequest'
               search: '#/components/schemas/ProductGroupSearchRequest'
 
-
     Error:
       $ref: '../product-group-api-v1/build/base.yaml#/components/schemas/Error'
 
@@ -151,6 +150,7 @@ components:
               update: '#/components/schemas/ProductGroupUpdateResponse'
               delete: '#/components/schemas/ProductGroupDeleteResponse'
               search: '#/components/schemas/ProductGroupSearchResponse'
+              init: '#/components/schemas/ProductGroupInitResponse'
 
 
     UserId:
@@ -181,6 +181,10 @@ components:
           uniqueItems: true
           items:
             $ref: '#/components/schemas/PropertyId'
+
+    ProductGroupInitResponse:
+      allOf:
+        - $ref: '#/components/schemas/IProductGroupResponse'
 
     ProductGroupCreateObject:
       allOf:
