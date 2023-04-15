@@ -12,7 +12,7 @@ fun Throwable.asPrgrpError(
     code = code,
     group = group,
     field = "",
-    title = message,
+    message = message,
     description = this.toString(),
 )
 

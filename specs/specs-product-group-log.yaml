@@ -21,14 +21,14 @@ components:
           type: string
         source:
           type: string
-        ad:
-          $ref: '#/components/schemas/MkplLogModel'
+        prgrp:
+          $ref: '#/components/schemas/PrgrpLogModel'
         errors:
           type: array
           items:
             $ref: '#/components/schemas/ErrorLogModel'
 
-    MkplLogModel:
+    PrgrpLogModel:
       title: Log model for microservice Marketplace
       type: object
       properties:
