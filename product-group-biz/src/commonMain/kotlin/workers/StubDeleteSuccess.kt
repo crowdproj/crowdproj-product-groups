@@ -5,7 +5,7 @@ import com.crowdproj.kotlin.cor.handlers.worker
 import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.models.PrgrpState
 import com.crowdproj.marketplace.product.group.common.stubs.PrgrpStubs
-import ru.otus.otuskotlin.marketplace.stubs.PrgrpStub
+import com.crowdproj.marketplace.product.group.stubs.PrgrpStub
 
 fun CorChainDsl<PrgrpContext>.stubDeleteSuccess(title: String) = worker {
     this.title = title

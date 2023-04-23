@@ -4,9 +4,9 @@ import com.crowdproj.marketplace.product.group.biz.PrgrpProcessor
 import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.models.*
 import com.crowdproj.marketplace.product.group.common.stubs.PrgrpStubs
+import com.crowdproj.marketplace.product.group.stubs.PrgrpStub
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import ru.otus.otuskotlin.marketplace.stubs.PrgrpStub
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

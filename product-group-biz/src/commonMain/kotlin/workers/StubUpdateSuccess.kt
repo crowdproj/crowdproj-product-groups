@@ -6,7 +6,7 @@ import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroupId
 import com.crowdproj.marketplace.product.group.common.models.PrgrpState
 import com.crowdproj.marketplace.product.group.common.stubs.PrgrpStubs
-import ru.otus.otuskotlin.marketplace.stubs.PrgrpStub
+import com.crowdproj.marketplace.product.group.stubs.PrgrpStub
 
 fun CorChainDsl<PrgrpContext>.stubUpdateSuccess(title: String) = worker {
     this.title = title
