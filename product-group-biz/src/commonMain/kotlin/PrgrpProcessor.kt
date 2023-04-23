@@ -25,20 +25,19 @@ class PrgrpProcessor() {
                     stubDbError("Simulation a db work error")
                     stubNoCase("Error: requested stub not permit")
                 }
-            }
+                validation {
+                    worker("Copying the fields to prgrpValidating") { prgrpValidating = groupRequest.deepCopy() }
+                    worker("Cleaning id") { prgrpValidating.id = PrgrpGroupId.NONE }
+                    worker("Cleaning name") { prgrpValidating.name = prgrpValidating.name.trim() }
+                    worker("Cleaning description") { prgrpValidating.description = prgrpValidating.description.trim() }
 
-            validation {
-                worker("Copying the fields to prgrpValidating") { prgrpValidating = groupRequest.deepCopy() }
-                worker("Cleaning id") { prgrpValidating.id = PrgrpGroupId.NONE }
-                worker("Cleaning name") { prgrpValidating.name = prgrpValidating.name.trim() }
-                worker("Cleaning description") { prgrpValidating.description = prgrpValidating.description.trim() }
+                    validateTitleNotEmpty("Check title is not empty")
+                    validateTitleHasContent("Check symbols")
+                    validateDescriptionNotEmpty("Check description is not empty")
+                    validateDescriptionHasContent("Check symbols")
 
-                validateTitleNotEmpty("Check title is not empty")
-                validateTitleHasContent("Check symbols")
-                validateDescriptionNotEmpty("Check description is not empty")
-                validateDescriptionHasContent("Check symbols")
-
-                finishPrgrpValidation("Completion of checks")
+                    finishPrgrpValidation("Completion of checks")
+                }
             }
 
             operation("Receive product group", PrgrpCommand.READ) {
