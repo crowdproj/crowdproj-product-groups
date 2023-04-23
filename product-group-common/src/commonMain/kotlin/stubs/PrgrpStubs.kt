@@ -4,5 +4,8 @@ enum class PrgrpStubs {
     NONE,
     SUCCESS,
     NOT_FOUND,
-    BAD_ID
+    BAD_ID,
+    BAD_DESCRIPTION,
+    BAD_TITLE,
+    DB_ERROR,
 }

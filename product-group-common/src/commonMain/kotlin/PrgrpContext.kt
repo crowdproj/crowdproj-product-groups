@@ -18,4 +18,11 @@ data class PrgrpContext(
     var groupFilterRequest: PrgrpGroupFilter = PrgrpGroupFilter(),
     var groupResponse: PrgrpGroup = PrgrpGroup(),
     var groupsResponse: MutableList<PrgrpGroup> = mutableListOf(),
-)
+
+    var prgrpValidating: PrgrpGroup = PrgrpGroup(),
+    var prgrpFilterValidating: PrgrpGroupFilter = PrgrpGroupFilter(),
+
+    var prgrpValidated: PrgrpGroup = PrgrpGroup(),
+    var prgrpFilterValidated: PrgrpGroupFilter = PrgrpGroupFilter(),
+
+   )

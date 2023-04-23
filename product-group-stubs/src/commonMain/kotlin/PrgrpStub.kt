@@ -17,6 +17,8 @@ object PrgrpStub {
         prgrpGroup("d-666-06", filter),
     )
 
+    fun prepareResult(block: PrgrpGroup.() -> Unit) = get().apply(block)
+
     private fun prgrpGroup(id: String, filter: String) = get().copy(
         id = PrgrpGroupId(id),
         name = "$filter $id",
