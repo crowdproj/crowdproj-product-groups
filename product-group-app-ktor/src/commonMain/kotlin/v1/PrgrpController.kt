@@ -4,12 +4,12 @@ import com.crowdproj.marketplace.product.group.api.v1.apiV1Mapper
 import com.crowdproj.marketplace.product.group.api.v1.models.*
 import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.mapper.*
+import com.crowdproj.marketplace.product.group.stubs.PrgrpStub
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
-import ru.otus.otuskotlin.marketplace.stubs.PrgrpStub
 
 
 suspend fun ApplicationCall.createPrgrp() {

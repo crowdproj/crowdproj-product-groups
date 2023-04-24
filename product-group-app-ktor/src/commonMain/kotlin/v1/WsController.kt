@@ -10,6 +10,7 @@ import com.crowdproj.marketplace.product.group.common.helpers.isUpdatableCommand
 import com.crowdproj.marketplace.product.group.mapper.fromTransport
 import com.crowdproj.marketplace.product.group.mapper.toTransportGroup
 import com.crowdproj.marketplace.product.group.mapper.toTransportInit
+import com.crowdproj.marketplace.product.group.stubs.PrgrpStub
 import io.ktor.websocket.*
 import kotlinx.coroutines.channels.ClosedReceiveChannelException
 import kotlinx.coroutines.flow.collect
@@ -18,7 +19,6 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.decodeFromString
-import ru.otus.otuskotlin.marketplace.stubs.PrgrpStub
 
 val sessions = mutableSetOf<WebSocketSession>()
 val mutex = Mutex()
