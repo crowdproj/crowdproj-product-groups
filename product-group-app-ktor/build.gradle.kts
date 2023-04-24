@@ -80,6 +80,8 @@ kotlin {
                 implementation(project(":product-group-common"))
                 implementation(project(":product-group-mapper"))
                 implementation(project(":product-group-stubs"))
+                implementation(project(":product-group-log-mapper"))
+                implementation(project(":product-group-logging-kermit"))
             }
         }
         @Suppress("UNUSED_VARIABLE")
