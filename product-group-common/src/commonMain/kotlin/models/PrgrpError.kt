@@ -8,7 +8,8 @@ data class PrgrpError(
     val message: String = "",
     val description: String = "",
     val level: Level = Level.ERROR,
-) {
+){
+
     @Suppress("unused")
     enum class Level {
         TRACE, DEBUG, INFO, WARN, ERROR

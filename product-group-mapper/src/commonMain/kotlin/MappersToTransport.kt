@@ -95,6 +95,6 @@ private fun PrgrpError.toTransportGroup() = Error(
     code = code.takeIf { it.isNotBlank() },
     group = group.takeIf { it.isNotBlank() },
     field = field.takeIf { it.isNotBlank() },
-    title = title.takeIf { it.isNotBlank() },
+    title = message.takeIf { it.isNotBlank() },
     description = description.takeIf { it.isNotBlank() }
 )

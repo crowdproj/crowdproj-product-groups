@@ -21,7 +21,7 @@ class MapperTest {
                     code = "err",
                     group = "request",
                     field = "title",
-                    title = "wrong title",
+                    message = "wrong title",
                 )
             ),
             groupsResponse = mutableListOf(PrgrpGroup(

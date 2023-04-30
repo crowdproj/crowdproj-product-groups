@@ -2,6 +2,8 @@ package com.crowdproj.marketplace.product.group.app.ktor.stubs
 
 import com.crowdproj.marketplace.product.group.api.v1.apiV1Mapper
 import com.crowdproj.marketplace.product.group.api.v1.models.*
+import com.crowdproj.marketplace.product.group.app.ktor.module
+import com.crowdproj.marketplace.product.group.app.ktor.plugins.initAppTestSettings
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
@@ -16,6 +18,7 @@ class ProductGroupStubApiTest {
 
     @Test
     fun create() = testApplication {
+        application { module(initAppTestSettings()) }
         val response = client.post("v1/group/create") {
             val requestObj = ProductGroupCreateRequest(
                 requestId = "12345",
@@ -40,6 +43,7 @@ class ProductGroupStubApiTest {
 
     @Test
     fun read() = testApplication {
+        application { module(initAppTestSettings()) }
         val response = client.post("v1/group/read") {
             val requestObj = ProductGroupReadRequest(
                 requestId = "12345",
@@ -61,6 +65,7 @@ class ProductGroupStubApiTest {
 
     @Test
     fun update() = testApplication {
+        application { module(initAppTestSettings()) }
         val response = client.post("v1/group/update") {
             val requestObj = ProductGroupUpdateRequest(
                 requestId = "12345",
@@ -86,6 +91,7 @@ class ProductGroupStubApiTest {
 
     @Test
     fun delete() = testApplication {
+        application { module() }
         val response = client.post("v1/group/delete") {
             val requestObj = ProductGroupDeleteRequest(
                 requestId = "12345",
@@ -110,6 +116,7 @@ class ProductGroupStubApiTest {
 
     @Test
     fun search() = testApplication {
+        application { module() }
         val response = client.post("v1/group/search") {
             val requestObj = ProductGroupSearchRequest(
                 requestId = "12345",
