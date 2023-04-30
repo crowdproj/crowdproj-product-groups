@@ -3,6 +3,7 @@ package com.crowdproj.marketplace.product.group.app.ktor.v1
 import com.crowdproj.marketplace.product.group.api.v1.apiV1Mapper
 import com.crowdproj.marketplace.product.group.api.v1.encodeResponse
 import com.crowdproj.marketplace.product.group.api.v1.models.IProductGroupRequest
+import com.crowdproj.marketplace.product.group.app.ktor.process
 import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.helpers.addError
 import com.crowdproj.marketplace.product.group.common.helpers.asPrgrpError
@@ -10,7 +11,6 @@ import com.crowdproj.marketplace.product.group.common.helpers.isUpdatableCommand
 import com.crowdproj.marketplace.product.group.mapper.fromTransport
 import com.crowdproj.marketplace.product.group.mapper.toTransportGroup
 import com.crowdproj.marketplace.product.group.mapper.toTransportInit
-import com.crowdproj.marketplace.product.group.stubs.PrgrpStub
 import io.ktor.websocket.*
 import kotlinx.coroutines.channels.ClosedReceiveChannelException
 import kotlinx.coroutines.flow.collect
@@ -46,7 +46,7 @@ suspend fun WebSocketSession.wsHandler() {
         try {
             val request = apiV1Mapper.decodeFromString<IProductGroupRequest>(jsonStr)
             context.fromTransport(request)
-            context.groupResponse = PrgrpStub.get()
+            process(context)
 
             val result = apiV1Mapper.encodeResponse(context.toTransportGroup())
 
