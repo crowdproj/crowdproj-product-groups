@@ -10,7 +10,7 @@ import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.models.PrgrpCommand
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroupId
 
-class PrgrpProcessor() {
+class PrgrpProcessor {
     suspend fun exec(ctx: PrgrpContext) = BusinessChain.exec(ctx)
 
     companion object {

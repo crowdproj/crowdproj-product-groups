@@ -20,4 +20,4 @@ suspend fun ApplicationCall.deletePrgrp(appSettings: PrgrpAppSettings, logger: I
     processV1<ProductGroupDeleteRequest, ProductGroupDeleteResponse>(appSettings, logger, "prgrp-delete", PrgrpCommand.DELETE)
 
 suspend fun ApplicationCall.searchPrgrp(appSettings: PrgrpAppSettings, logger: ILogWrapper) =
-    processV1<ProductGroupUpdateRequest, ProductGroupUpdateResponse>(appSettings, logger, "prgrp-search", PrgrpCommand.SEARCH)
+    processV1<ProductGroupSearchRequest, ProductGroupSearchResponse>(appSettings, logger, "prgrp-search", PrgrpCommand.SEARCH)

@@ -2,6 +2,7 @@ package com.crowdproj.marketplace.product.group.app.ktor.plugins
 
 import com.crowdproj.marketplace.product.group.app.ktor.PrgrpAppSettings
 import PrgrpCorSettings
+import com.crowdproj.marketplace.product.group.biz.PrgrpProcessor
 import com.crowdproj.marketplace.product.group.common.logging.LoggerProvider
 import com.crowdproj.marketplace.product.group.fluentbit.FluentBitAppender
 import com.crowdproj.marketplace.product.group.fluentbit.ILogAppender
@@ -16,14 +17,14 @@ fun Application.initAppSettings(): PrgrpAppSettings = PrgrpAppSettings(
     corSettings = PrgrpCorSettings(
         loggerProvider = getLoggerProviderConf(FLUENT_BIT_APPENDER),
     ),
-    processor = "processor"
+    processor = PrgrpProcessor(),
 )
 
 fun Application.initAppTestSettings(): PrgrpAppSettings = PrgrpAppSettings(
     corSettings = PrgrpCorSettings(
         loggerProvider = getLoggerProviderConf(ILogAppender.LOG_STUB_APPENDER),
     ),
-    processor = "processor"
+    processor = PrgrpProcessor(),
 )
 
 fun Application.getLoggerProviderConf(logAppender: ILogAppender): LoggerProvider = LoggerProvider {

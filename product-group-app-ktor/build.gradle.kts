@@ -80,6 +80,7 @@ kotlin {
                 implementation(project(":product-group-common-logging"))
                 implementation(project(":product-group-logging-kermit"))
                 implementation(project(":product-group-fluentbit"))
+                implementation(project(":product-group-biz"))
             }
         }
         @Suppress("UNUSED_VARIABLE")

@@ -24,13 +24,14 @@ suspend inline fun <reified Q : IProductGroupRequest, @Suppress("unused") reifie
     logId: String,
     command: PrgrpCommand? = null,
 ) {
-    initAppenderSocketConnection()
-
     val ctx = PrgrpContext(
         timeStart = Clock.System.now(),
     )
-       val processor = appSettings.processor
+
+    val processor = appSettings.processor
+
     try {
+        initAppenderSocketConnection()
         logger.doWithLogging(id = logId) {
             val request = receive<Q>()
             ctx.fromTransport(request)
@@ -38,8 +39,9 @@ suspend inline fun <reified Q : IProductGroupRequest, @Suppress("unused") reifie
                 msg = "$command request is got",
                 data = ctx.toLog("${logId}-got")
             )
-            // TODO("add business logic")
-            // processor.exec(ctx)
+
+            processor.exec(ctx)
+
             logger.info(
                 msg = "$command request is handled",
                 data = ctx.toLog("${logId}-handled")
@@ -54,8 +56,9 @@ suspend inline fun <reified Q : IProductGroupRequest, @Suppress("unused") reifie
             )
             ctx.state = PrgrpState.FAILING
             ctx.errors.add(e.asPrgrpError())
-            // TODO("add business logic")
-            // processor.exec(ctx)
+
+            processor.exec(ctx)
+
             respond(ctx.toTransportGroup())
         }
     } finally {

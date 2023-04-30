@@ -91,7 +91,7 @@ class ProductGroupStubApiTest {
 
     @Test
     fun delete() = testApplication {
-        application { module() }
+        application { module(initAppTestSettings()) }
         val response = client.post("v1/group/delete") {
             val requestObj = ProductGroupDeleteRequest(
                 requestId = "12345",
@@ -110,13 +110,14 @@ class ProductGroupStubApiTest {
         }
         val responseJson = response.bodyAsText()
         val responseObj = apiV1Mapper.decodeFromString<ProductGroupDeleteResponse>(responseJson)
+
         assertEquals(200, response.status.value)
         assertEquals("666", responseObj.group?.id)
     }
 
     @Test
     fun search() = testApplication {
-        application { module() }
+        application { module(initAppTestSettings()) }
         val response = client.post("v1/group/search") {
             val requestObj = ProductGroupSearchRequest(
                 requestId = "12345",
@@ -132,6 +133,7 @@ class ProductGroupStubApiTest {
         }
         val responseJson = response.bodyAsText()
         val responseObj = apiV1Mapper.decodeFromString<ProductGroupSearchResponse>(responseJson)
+
         assertEquals(200, response.status.value)
         assertEquals("d-666-01", responseObj.groups?.first()?.id)
     }
