@@ -4,24 +4,30 @@ import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
 import com.crowdproj.marketplace.product.group.common.logging.ILogWrapper
 import com.crowdproj.marketplace.product.group.common.logging.LogLevel
+import com.crowdproj.marketplace.product.group.fluentbit.ILogAppender
 
 class LoggerWrapperKermit(
     val logger: Logger,
+    val logAppender: ILogAppender = ILogAppender.NONE,
     override val loggerId: String,
 ) : ILogWrapper {
 
-    override fun log(msg: String,
+    override suspend fun log(msg: String,
                      lvl: LogLevel,
                      marker: String,
                      e: Throwable?,
                      data: Any?,
                      objs: Map<String, Any>?) {
+        val message = formatMessage(msg, data, objs)
+
         logger.log(
             severity = lvl.toKermit(),
             tag = marker,
             throwable = e,
-            message = formatMessage(msg, data, objs)
+            message = message
         )
+
+        logAppender.send(msg)
     }
 
     private fun LogLevel.toKermit() = when(this) {
@@ -45,6 +51,6 @@ class LoggerWrapperKermit(
             message += "\n" + it.toString()
         }
 
-        return message;
+        return message
     }
 }

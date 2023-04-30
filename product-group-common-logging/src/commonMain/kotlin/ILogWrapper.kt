@@ -8,7 +8,7 @@ import kotlin.time.measureTimedValue
 interface ILogWrapper {
     val loggerId: String
 
-    fun log(
+    suspend fun log(
         msg: String = "",
         lvl: LogLevel = LogLevel.TRACE,
         marker: String = "DEV",
@@ -17,7 +17,7 @@ interface ILogWrapper {
         objs: Map<String, Any>? = null,
     )
 
-    fun error(
+    suspend fun error(
         msg: String = "",
         marker: String = "DEV",
         e: Throwable? = null,
@@ -25,14 +25,14 @@ interface ILogWrapper {
         objs: Map<String, Any>? = null,
     ) = log(msg, LogLevel.ERROR, marker, e, data, objs)
 
-    fun info(
+    suspend fun info(
         msg: String = "",
         marker: String = "DEV",
         data: Any? = null,
         objs: Map<String, Any>? = null,
     ) = log(msg, LogLevel.INFO, marker, null, data, objs)
 
-    fun debug(
+    suspend fun debug(
         msg: String = "",
         marker: String = "DEV",
         data: Any? = null,
@@ -83,7 +83,7 @@ interface ILogWrapper {
         val DEFAULT = object: ILogWrapper {
             override val loggerId: String = "NONE"
 
-            override fun log(
+            override suspend fun log(
                 msg: String,
                 lvl: LogLevel,
                 marker: String,

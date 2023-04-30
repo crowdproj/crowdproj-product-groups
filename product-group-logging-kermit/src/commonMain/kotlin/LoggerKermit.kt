@@ -4,10 +4,11 @@ import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
 import co.touchlab.kermit.StaticConfig
 import com.crowdproj.marketplace.product.group.common.logging.ILogWrapper
+import com.crowdproj.marketplace.product.group.fluentbit.ILogAppender
 import kotlin.reflect.KClass
 
 @Suppress("unused")
-fun loggerKermit(loggerId: String): ILogWrapper {
+fun loggerKermit(loggerId: String, ILogAppender: ILogAppender): ILogWrapper {
     val logger = Logger(
         config = StaticConfig(
             minSeverity = Severity.Info,
@@ -18,11 +19,12 @@ fun loggerKermit(loggerId: String): ILogWrapper {
     return LoggerWrapperKermit(
         logger = logger,
         loggerId = loggerId,
+        logAppender = ILogAppender,
     )
 }
 
 @Suppress
-fun loggerKermit(cls: KClass<*>): ILogWrapper {
+fun loggerKermit(cls: KClass<*>, ILogAppender: ILogAppender): ILogWrapper {
     val logger = Logger(
         config = StaticConfig(
             minSeverity = Severity.Info,
@@ -33,5 +35,6 @@ fun loggerKermit(cls: KClass<*>): ILogWrapper {
     return LoggerWrapperKermit(
         logger = logger,
         loggerId = cls.qualifiedName ?: "",
+        logAppender = ILogAppender
     )
 }

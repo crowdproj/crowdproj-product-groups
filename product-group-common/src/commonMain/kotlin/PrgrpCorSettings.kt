@@ -1,5 +1,3 @@
-package com.crowdproj.marketplace.product.group.common
-
 import com.crowdproj.marketplace.product.group.common.logging.LoggerProvider
 
 data class PrgrpCorSettings(

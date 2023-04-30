@@ -3,6 +3,8 @@ package com.crowdproj.marketplace.product.group.app.ktor.v1
 import com.crowdproj.marketplace.product.group.api.v1.models.IProductGroupRequest
 import com.crowdproj.marketplace.product.group.api.v1.models.IProductGroupResponse
 import com.crowdproj.marketplace.product.group.app.ktor.PrgrpAppSettings
+import com.crowdproj.marketplace.product.group.app.ktor.plugins.closeAppenderSocketConnection
+import com.crowdproj.marketplace.product.group.app.ktor.plugins.initAppenderSocketConnection
 import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.helpers.asPrgrpError
 import com.crowdproj.marketplace.product.group.common.logging.ILogWrapper
@@ -22,11 +24,12 @@ suspend inline fun <reified Q : IProductGroupRequest, @Suppress("unused") reifie
     logId: String,
     command: PrgrpCommand? = null,
 ) {
+    initAppenderSocketConnection()
+
     val ctx = PrgrpContext(
         timeStart = Clock.System.now(),
     )
-
-    val processor = appSettings.processor
+       val processor = appSettings.processor
     try {
         logger.doWithLogging(id = logId) {
             val request = receive<Q>()
@@ -55,6 +58,8 @@ suspend inline fun <reified Q : IProductGroupRequest, @Suppress("unused") reifie
             // processor.exec(ctx)
             respond(ctx.toTransportGroup())
         }
+    } finally {
+        closeAppenderSocketConnection()
     }
 
 }

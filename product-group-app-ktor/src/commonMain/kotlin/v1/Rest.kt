@@ -8,6 +8,9 @@ fun Route.v1Group(appSettings: PrgrpAppSettings) {
     val logger = appSettings.corSettings.loggerProvider.logger(Route::v1Group)
 
     route("group") {
+        get {
+
+        }
         post("create") {
             call.createPrgrp(appSettings, logger)
         }
