@@ -12,18 +12,17 @@ import kotlinx.serialization.json.Json
 
 
 interface ILogAppender {
-    suspend fun send(msg: String)
+    suspend fun initialize()
+    suspend fun send(message: String)
     fun close()
 
     companion object {
-        val NONE = object : ILogAppender {
-            override suspend fun send(msg: String) {
-                TODO("Not yet implemented")
-            }
+        val LOG_STUB_APPENDER = object : ILogAppender {
+            override suspend fun initialize() {}
 
-            override fun close() {
-                TODO("Not yet implemented")
-            }
+            override suspend fun send(message: String) {}
+
+            override fun close() {}
         }
     }
 }
@@ -39,7 +38,7 @@ class FluentBitAppender(
         timeStart = Clock.System.now(),
     )
 
-    suspend fun initialize() {
+    override suspend fun initialize() {
         socket = aSocket(SelectorManager(Dispatchers.Default)).tcp().connect(InetSocketAddress(host, port))
         channel = socket.openWriteChannel(autoFlush = true)
     }

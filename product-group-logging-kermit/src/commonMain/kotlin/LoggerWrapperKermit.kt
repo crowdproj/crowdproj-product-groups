@@ -8,7 +8,7 @@ import com.crowdproj.marketplace.product.group.fluentbit.ILogAppender
 
 class LoggerWrapperKermit(
     val logger: Logger,
-    val logAppender: ILogAppender = ILogAppender.NONE,
+    val logAppender: ILogAppender = ILogAppender.LOG_STUB_APPENDER,
     override val loggerId: String,
 ) : ILogWrapper {
 
