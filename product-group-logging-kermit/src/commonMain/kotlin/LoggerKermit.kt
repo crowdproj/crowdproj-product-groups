@@ -3,8 +3,8 @@ package com.crowdproj.marketplace.product.group.logging.kermit
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
 import co.touchlab.kermit.StaticConfig
-import com.crowdproj.marketplace.product.group.common.logging.ILogWrapper
 import com.crowdproj.marketplace.product.group.fluentbit.ILogAppender
+import com.crowdproj.marketplace.product.group.logging.common.ILogWrapper
 import kotlin.reflect.KClass
 
 @Suppress("unused")

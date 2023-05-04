@@ -7,10 +7,10 @@ import com.crowdproj.marketplace.product.group.app.ktor.plugins.closeAppenderSoc
 import com.crowdproj.marketplace.product.group.app.ktor.plugins.initAppenderSocketConnection
 import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.helpers.asPrgrpError
-import com.crowdproj.marketplace.product.group.common.logging.ILogWrapper
 import com.crowdproj.marketplace.product.group.common.models.PrgrpCommand
 import com.crowdproj.marketplace.product.group.common.models.PrgrpState
 import com.crowdproj.marketplace.product.group.log.mapper.toLog
+import com.crowdproj.marketplace.product.group.logging.common.ILogWrapper
 import com.crowdproj.marketplace.product.group.mapper.fromTransport
 import com.crowdproj.marketplace.product.group.mapper.toTransportGroup
 import io.ktor.server.application.*

@@ -16,7 +16,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-common"))
-                implementation(project(":product-group-common-logging"))
+                implementation(project(":product-group-logging-common"))
 
                 api("org.jetbrains.kotlinx:kotlinx-datetime:$datetimeVersion")
             }

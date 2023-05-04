@@ -2,8 +2,8 @@ package com.crowdproj.marketplace.product.group.app.ktor.v1
 
 import com.crowdproj.marketplace.product.group.api.v1.models.*
 import com.crowdproj.marketplace.product.group.app.ktor.PrgrpAppSettings
-import com.crowdproj.marketplace.product.group.common.logging.ILogWrapper
 import com.crowdproj.marketplace.product.group.common.models.PrgrpCommand
+import com.crowdproj.marketplace.product.group.logging.common.ILogWrapper
 import io.ktor.server.application.*
 
 

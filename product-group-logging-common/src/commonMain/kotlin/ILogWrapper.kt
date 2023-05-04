@@ -1,4 +1,4 @@
-package com.crowdproj.marketplace.product.group.common.logging
+package com.crowdproj.marketplace.product.group.logging.common
 
 import kotlinx.datetime.Clock
 import kotlin.time.ExperimentalTime

@@ -75,10 +75,12 @@ kotlin {
                 implementation(project(":product-group-common"))
                 implementation(project(":product-group-mapper"))
                 implementation(project(":product-group-stubs"))
+
                 implementation(project(":product-group-log-mapper"))
                 implementation(project(":product-group-api-log"))
-                implementation(project(":product-group-common-logging"))
+                implementation(project(":product-group-logging-common"))
                 implementation(project(":product-group-logging-kermit"))
+
                 implementation(project(":product-group-fluentbit"))
                 implementation(project(":product-group-biz"))
             }

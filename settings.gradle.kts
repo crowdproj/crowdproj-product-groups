@@ -28,9 +28,11 @@ include("product-group-common")
 include("product-group-mapper")
 include("product-group-app-ktor")
 include("product-group-stubs")
+
 include("product-group-api-log")
-include("product-group-common-logging")
+include("product-group-logging-common")
 include("product-group-logging-kermit")
 include("product-group-log-mapper")
+
 include("product-group-fluentbit")
 include("product-group-biz")
