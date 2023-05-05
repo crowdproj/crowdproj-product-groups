@@ -1,8 +1,9 @@
-package ru.otus.otuskotlin.marketplace.stubs
+package com.crowdproj.marketplace.product.group.stubs
+
 
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroup
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroupId
-import ru.otus.otuskotlin.marketplace.stubs.PrgrpStubFasteners.PRGRP_FASTENERS
+import com.crowdproj.marketplace.product.group.stubs.PrgrpStubFasteners.PRGRP_FASTENERS
 
 
 object PrgrpStub {
@@ -16,6 +17,8 @@ object PrgrpStub {
         prgrpGroup("d-666-05", filter),
         prgrpGroup("d-666-06", filter),
     )
+
+    fun prepareResult(block: PrgrpGroup.() -> Unit) = get().apply(block)
 
     private fun prgrpGroup(id: String, filter: String) = get().copy(
         id = PrgrpGroupId(id),

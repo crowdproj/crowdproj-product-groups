@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.util.suffixIfNot
 import org.jetbrains.kotlin.gradle.tasks.KotlinNativeLink
 import com.bmuschko.gradle.docker.tasks.image.Dockerfile
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
@@ -16,16 +15,12 @@ fun ktorServer(module: String, version: String? = this@Build_gradle.ktorVersion)
 fun ktorClient(module: String, version: String? = this@Build_gradle.ktorVersion): Any =
     "io.ktor:ktor-client-$module:$version"
 
-fun ktor(module: String, prefix: String = "server-", version: String? = this@Build_gradle.ktorVersion): Any =
-    "io.ktor:ktor-${prefix.suffixIfNot("-")}$module:$version"
 
 plugins {
-    id("application")
-    id("com.bmuschko.docker-java-application")
-    id("com.bmuschko.docker-remote-api")
-    kotlin("plugin.serialization")
     kotlin("multiplatform")
     id("io.ktor.plugin")
+    id("com.bmuschko.docker-java-application")
+    id("com.bmuschko.docker-remote-api")
 }
 
 application {
@@ -33,7 +28,7 @@ application {
 }
 
 kotlin {
-    jvm {}
+    jvm { withJava() }
 
     val nativeTarget = when (System.getProperty("os.name")) {
         "Linux" -> linuxX64("native")
@@ -80,6 +75,14 @@ kotlin {
                 implementation(project(":product-group-common"))
                 implementation(project(":product-group-mapper"))
                 implementation(project(":product-group-stubs"))
+
+                implementation(project(":product-group-log-mapper"))
+                implementation(project(":product-group-api-log"))
+                implementation(project(":product-group-logging-common"))
+                implementation(project(":product-group-logging-kermit"))
+
+                implementation(project(":product-group-fluentbit"))
+                implementation(project(":product-group-biz"))
             }
         }
         @Suppress("UNUSED_VARIABLE")
@@ -97,9 +100,6 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
-                implementation(ktor("test-host")) // "io.ktor:ktor-server-test-host:$ktorVersion"
-                implementation(ktor("content-negotiation", prefix = "client-"))
-                implementation(ktor("websockets", prefix = "client-"))
             }
         }
 
@@ -117,10 +117,6 @@ kotlin {
         val nativeTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-
-                implementation(ktor("test-host"))
-                implementation(ktor("content-negotiation", prefix = "client-"))
-                implementation(ktor("websockets", prefix = "client-"))
             }
         }
     }

@@ -3,6 +3,7 @@ package com.crowdproj.marketplace.product.group.app.ktor.v1
 import com.crowdproj.marketplace.product.group.api.v1.apiV1Mapper
 import com.crowdproj.marketplace.product.group.api.v1.encodeResponse
 import com.crowdproj.marketplace.product.group.api.v1.models.IProductGroupRequest
+import com.crowdproj.marketplace.product.group.app.ktor.process
 import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.helpers.addError
 import com.crowdproj.marketplace.product.group.common.helpers.asPrgrpError
@@ -18,7 +19,6 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.decodeFromString
-import ru.otus.otuskotlin.marketplace.stubs.PrgrpStub
 
 val sessions = mutableSetOf<WebSocketSession>()
 val mutex = Mutex()
@@ -46,7 +46,7 @@ suspend fun WebSocketSession.wsHandler() {
         try {
             val request = apiV1Mapper.decodeFromString<IProductGroupRequest>(jsonStr)
             context.fromTransport(request)
-            context.groupResponse = PrgrpStub.get()
+            process(context)
 
             val result = apiV1Mapper.encodeResponse(context.toTransportGroup())
 

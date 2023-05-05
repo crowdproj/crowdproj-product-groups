@@ -1,53 +1,23 @@
 package com.crowdproj.marketplace.product.group.app.ktor.v1
 
-import com.crowdproj.marketplace.product.group.api.v1.apiV1Mapper
 import com.crowdproj.marketplace.product.group.api.v1.models.*
-import com.crowdproj.marketplace.product.group.common.PrgrpContext
-import com.crowdproj.marketplace.product.group.mapper.*
+import com.crowdproj.marketplace.product.group.app.ktor.PrgrpAppSettings
+import com.crowdproj.marketplace.product.group.common.models.PrgrpCommand
+import com.crowdproj.marketplace.product.group.logging.common.ILogWrapper
 import io.ktor.server.application.*
-import io.ktor.server.request.*
-import io.ktor.server.response.*
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import ru.otus.otuskotlin.marketplace.stubs.PrgrpStub
 
 
-suspend fun ApplicationCall.createPrgrp() {
-    val request = apiV1Mapper.decodeFromString<ProductGroupCreateRequest>(receiveText())
-    val context = PrgrpContext()
-    context.fromTransport(request)
-    context.groupResponse = PrgrpStub.get()
-    respond(apiV1Mapper.encodeToString(context.toTransportCreate()))
-}
+suspend fun ApplicationCall.createPrgrp(appSettings: PrgrpAppSettings, logger: ILogWrapper) =
+    processV1<ProductGroupCreateRequest, ProductGroupCreateResponse>(appSettings, logger, "prgrp-create", PrgrpCommand.CREATE)
 
-suspend fun ApplicationCall.readPrgrp() {
-    val request = apiV1Mapper.decodeFromString<ProductGroupReadRequest>(receiveText())
-    val context = PrgrpContext()
-    context.fromTransport(request)
-    context.groupResponse = PrgrpStub.get()
-    respond(apiV1Mapper.encodeToString(context.toTransportRead()))
-}
+suspend fun ApplicationCall.readPrgrp(appSettings: PrgrpAppSettings, logger: ILogWrapper) =
+    processV1<ProductGroupReadRequest, ProductGroupReadResponse>(appSettings, logger, "prgrp-read", PrgrpCommand.READ)
 
-suspend fun ApplicationCall.updatePrgrp() {
-    val request = apiV1Mapper.decodeFromString<ProductGroupUpdateRequest>(receiveText())
-    val context = PrgrpContext()
-    context.fromTransport(request)
-    context.groupResponse = PrgrpStub.get()
-    respond(apiV1Mapper.encodeToString(context.toTransportUpdate()))
-}
+suspend fun ApplicationCall.updatePrgrp(appSettings: PrgrpAppSettings, logger: ILogWrapper) =
+    processV1<ProductGroupUpdateRequest, ProductGroupUpdateResponse>(appSettings, logger, "prgrp-update", PrgrpCommand.UPDATE)
 
-suspend fun ApplicationCall.deletePrgrp() {
-    val request = apiV1Mapper.decodeFromString<ProductGroupDeleteRequest>(receiveText())
-    val context = PrgrpContext()
-    context.fromTransport(request)
-    context.groupResponse = PrgrpStub.get()
-    respond(apiV1Mapper.encodeToString(context.toTransportDelete()))
-}
+suspend fun ApplicationCall.deletePrgrp(appSettings: PrgrpAppSettings, logger: ILogWrapper) =
+    processV1<ProductGroupDeleteRequest, ProductGroupDeleteResponse>(appSettings, logger, "prgrp-delete", PrgrpCommand.DELETE)
 
-suspend fun ApplicationCall.searchPrgrp() {
-    val request = apiV1Mapper.decodeFromString<ProductGroupSearchRequest>(receiveText())
-    val context = PrgrpContext()
-    context.fromTransport(request)
-    context.groupsResponse.addAll(PrgrpStub.prepareSearchList("Screws"))
-    respond(apiV1Mapper.encodeToString(context.toTransportSearch()))
-}
+suspend fun ApplicationCall.searchPrgrp(appSettings: PrgrpAppSettings, logger: ILogWrapper) =
+    processV1<ProductGroupSearchRequest, ProductGroupSearchResponse>(appSettings, logger, "prgrp-search", PrgrpCommand.SEARCH)

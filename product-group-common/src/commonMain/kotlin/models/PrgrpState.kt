@@ -4,4 +4,5 @@ enum class PrgrpState {
     NONE,
     RUNNING,
     FAILING,
+    FINISHING
 }

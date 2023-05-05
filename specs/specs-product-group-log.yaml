@@ -1,0 +1,99 @@
+openapi: 3.0.4
+info:
+  title: Marketplace log models
+  description: Log models for logging services of marketplace
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+paths: {}
+
+components:
+  schemas:
+    CommonLogModel:
+      title: Common log model
+      description: Common log model for all microservices
+      type: object
+      properties:
+        messageTime:
+          type: string
+        logId:
+          type: string
+        source:
+          type: string
+        prgrp:
+          $ref: '#/components/schemas/PrgrpLogModel'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorLogModel'
+
+    PrgrpLogModel:
+      title: Log model for microservice Marketplace
+      type: object
+      properties:
+        requestId:
+          type: string
+        operation:
+          type: string
+          enum:
+            - create
+            - read
+            - update
+            - delete
+            - search
+        requestPrgrp:
+          $ref: '#/components/schemas/PrgrpLog'
+        requestFilter:
+          $ref: '#/components/schemas/PrgrpFilterLog'
+        responsePrgrp:
+          $ref: '#/components/schemas/PrgrpLog'
+        responsePrgrps:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrgrpLog'
+
+    ErrorLogModel:
+      title: Log model for error
+      type: object
+      properties:
+        message:
+          type: string
+        field:
+          type: string
+        code:
+          type: string
+        level:
+          type: string
+
+    PrgrpLog:
+      title: Log model for product group
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        ownerId:
+          type: string
+        properties:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: './specs-product-group-v1.yml#/components/schemas/PropertyId'
+        permissions:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+
+    PrgrpFilterLog:
+      title: Log model for filter
+      properties:
+        searchString:
+          type: string
+        ownerId:
+          type: string
+

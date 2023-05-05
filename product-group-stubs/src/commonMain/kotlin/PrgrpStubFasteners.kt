@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.marketplace.stubs
+package com.crowdproj.marketplace.product.group.stubs
 
 import com.crowdproj.marketplace.product.group.common.models.*
 

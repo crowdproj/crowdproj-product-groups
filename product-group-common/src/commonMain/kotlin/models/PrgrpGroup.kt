@@ -7,4 +7,8 @@ data class PrgrpGroup(
     var ownerId: PrgrpUserId = PrgrpUserId.NONE,
     var properties: MutableSet<PrgrpPropertyId> = mutableSetOf(),
     val permissionsClient: MutableSet<PrgrpGroupPermissionClient> = mutableSetOf()
-)
+){
+    fun deepCopy(): PrgrpGroup = copy(
+        permissionsClient = permissionsClient.toMutableSet(),
+    )
+}

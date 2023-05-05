@@ -1,0 +1,63 @@
+version: '3'
+
+services:
+  app:
+    image: com.crowdproj.marketplace/product-group-app-ktor:1.0-snapshot
+    ports:
+      - "8080:8080"
+    depends_on:
+      - fluent-bit
+    environment:
+      - LOGS_FB_HOSTS=fluent-bit
+      - LOGS_FB_PORT=24225
+
+  fluent-bit:
+    container_name: fluent-bit
+    image: fluent/fluent-bit
+    ports:
+      - "24225:24225"
+      - "24225:24225/udp"
+      - "2020:2020"
+    environment:
+      - opensearch_host=opensearch
+      - opensearch_user=admin
+      - opensearch_pass=admin
+    volumes:
+      - ./volumes/fluent-bit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+      - ./volumes/fluent-bit/parsers.conf:/fluent-bit/etc/parsers.conf
+
+  opensearch:
+    container_name: opensearch
+    image: opensearchproject/opensearch:latest
+    environment:
+      - discovery.type=single-node
+      - http.port=9200
+      - bootstrap.memory_lock=true
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - '9200:9200'
+      - '9600:9600'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data
+
+  dashboards:
+    image: opensearchproject/opensearch-dashboards:latest
+    container_name: opensearch-dashboards
+    ports:
+      - 5601:5601
+    expose:
+      - "5601"
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch:9200"]'
+    depends_on:
+      - opensearch
+
+volumes:
+  opensearch-data:

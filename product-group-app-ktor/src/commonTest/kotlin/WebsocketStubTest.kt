@@ -2,6 +2,8 @@ package com.crowdproj.marketplace.product.group.app.ktor.stubs
 
 import com.crowdproj.marketplace.product.group.api.v1.apiV1Mapper
 import com.crowdproj.marketplace.product.group.api.v1.models.*
+import com.crowdproj.marketplace.product.group.app.ktor.module
+import com.crowdproj.marketplace.product.group.app.ktor.plugins.initAppTestSettings
 import io.ktor.client.plugins.websocket.*
 import io.ktor.server.testing.*
 import io.ktor.websocket.*
@@ -107,6 +109,7 @@ class WebsocketStubTest {
         request: IProductGroupRequest,
         crossinline assertBlock: (T) -> Unit
     ) = testApplication {
+        application { module(initAppTestSettings()) }
         val client = createClient {
             install(WebSockets)
         }
