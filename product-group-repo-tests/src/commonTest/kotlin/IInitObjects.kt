@@ -1,5 +1,5 @@
 package com.crowdproj.marketplace.product.group.repo.tests
 
-interface IInitObjects<T> {
-    val initObject: List<T>
+internal interface IInitObjects<T> {
+    val initObjects: List<T>
 }
