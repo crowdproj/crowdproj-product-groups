@@ -15,7 +15,7 @@ import repo.*
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 
-class PrgrpInMemoryRepo(
+class PrgrpInMemoryRepo (
     initObjects: List<PrgrpGroup> = emptyList(),
     ttl: Duration = 2.minutes,
     val randomUUID: () -> String = { uuid4().toString() },

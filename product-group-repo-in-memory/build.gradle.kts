@@ -21,7 +21,7 @@ kotlin {
                 implementation("io.github.reactivecircus.cache4k:cache4k:$cache4kVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 implementation("com.benasher44:uuid:$kmpUUIDVersion")
-         //       implementation(project(":ok-marketplace-repo-tests"))
+                implementation(project(":product-group-repo-tests"))
 
             }
         }
@@ -30,6 +30,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation(project(":product-group-repo-tests"))
             }
         }
         @Suppress("UNUSED_VARIABLE")

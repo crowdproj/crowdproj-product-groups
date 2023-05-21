@@ -45,7 +45,7 @@ abstract class RepoPrgrpDeleteTest {
     @Test
     fun deleteConcurrency() = runRepoTest {
         val lockOld = deleteConc.lock
-        val result = repo.deletePrGroup(DbPrgrpIdRequest(id = deleteConc.id, lock = ))
+        val result = repo.deletePrGroup(DbPrgrpIdRequest(id = deleteConc.id, lock = lockBad))
 
         assertEquals(false, result.isSuccess)
         val error = result.errors.find { it.code == "concurrency" }
