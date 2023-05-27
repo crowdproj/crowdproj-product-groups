@@ -24,5 +24,5 @@
    **When** I want to quickly group and sort it
    **than** I take a ready solution as SaaS service product group
    **and** take it as part of my own IT infrastructure
-   **and** make needed sorts and groups
+   **and** make needed sorts and general
    **and** show it for my consumers

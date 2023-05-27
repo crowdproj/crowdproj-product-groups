@@ -10,4 +10,4 @@
     1. Name
     2. Description
     3. Properties
-2. ProductPropertyId - identification groups properties(washing machine, refrigerators and etc)
+2. ProductPropertyId - identification general properties(washing machine, refrigerators and etc)

@@ -1,5 +1,6 @@
-package com.crowdproj.marketplace.product.group.biz
+package com.crowdproj.marketplace.product.group.biz.validation
 
+import com.crowdproj.marketplace.product.group.biz.PrgrpProcessor
 import com.crowdproj.marketplace.product.group.common.models.PrgrpCommand
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlin.test.Test
