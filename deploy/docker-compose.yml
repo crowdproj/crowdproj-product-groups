@@ -7,6 +7,7 @@ services:
       - "8080:8080"
     depends_on:
       - fluent-bit
+      - gremlin
     environment:
       - LOGS_FB_HOSTS=fluent-bit
       - LOGS_FB_PORT=24225
@@ -58,6 +59,18 @@ services:
       OPENSEARCH_HOSTS: '["https://opensearch:9200"]'
     depends_on:
       - opensearch
+
+  gremlin:
+    image: "arcadedata/arcadedb:23.4.1"
+    container_name: gremlin
+    ports:
+      - "2480:2480"
+      - "2424:2424"
+      - "8182:8182"
+    volumes:
+      - gremlin_data:/home/arcadedb/databases
+    environment:
+      JAVA_OPTS: "-Darcadedb.server.rootPassword=root_root -Darcadedb.server.plugins=GremlinServer:com.arcadedb.server.gremlin.GremlinServerPlugin"
 
 volumes:
   opensearch-data:
