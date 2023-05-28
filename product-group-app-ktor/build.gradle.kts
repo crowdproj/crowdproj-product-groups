@@ -81,6 +81,9 @@ kotlin {
                 implementation(project(":product-group-logging-common"))
                 implementation(project(":product-group-logging-kermit"))
 
+                implementation(project(":product-group-repo-in-memory"))
+                implementation(project(":product-group-repo-stubs"))
+
                 implementation(project(":product-group-fluentbit"))
                 implementation(project(":product-group-biz"))
             }
@@ -93,6 +96,8 @@ kotlin {
                 implementation(ktorServer("test-host"))
                 implementation(ktorClient("content-negotiation"))
                 implementation("io.ktor:ktor-client-mock:$ktorVersion")
+
+                implementation(project(":product-group-repo-tests"))
             }
         }
 
@@ -108,6 +113,9 @@ kotlin {
             dependencies {
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
                 implementation("ch.qos.logback:logback-access:$logbackVersion")
+                implementation("ch.qos.logback:logback-access:$logbackVersion")
+
+                implementation(project(":product-group-repo-gremlin"))
 
                 implementation("org.slf4j:slf4j-api:$slf4jVersion")
             }

@@ -5,5 +5,5 @@ import com.crowdproj.marketplace.product.group.biz.PrgrpProcessor
 
 data class PrgrpAppSettings(
     val corSettings: PrgrpCorSettings,
-    val processor: PrgrpProcessor,
+    val processor: PrgrpProcessor = PrgrpProcessor(settings = corSettings),
 )

@@ -19,7 +19,6 @@ fun CorChainDsl<PrgrpContext>.repoUpdate(title: String) = worker {
         } else {
             state = PrgrpState.FAILING
             errors.addAll(result.errors)
-            prgrpRepoDone
         }
     }
 }

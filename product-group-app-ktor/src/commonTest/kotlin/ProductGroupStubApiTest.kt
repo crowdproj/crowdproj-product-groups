@@ -15,7 +15,6 @@ import kotlin.test.assertEquals
 
 
 class ProductGroupStubApiTest {
-
     @Test
     fun create() = testApplication {
         application { module(initAppTestSettings()) }
