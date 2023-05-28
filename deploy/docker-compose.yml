@@ -11,6 +11,11 @@ services:
     environment:
       - LOGS_FB_HOSTS=fluent-bit
       - LOGS_FB_PORT=24225
+      - DB_TYPE_PROD=gremlin
+      - DB_GREMLIN_HOST=gremlin
+      - DB_GREMLIN_PORT=8182
+      - DB_GREMLIN_USER=root
+      - DB_GREMLIN_PASS=root_root
 
   fluent-bit:
     container_name: fluent-bit
@@ -74,3 +79,4 @@ services:
 
 volumes:
   opensearch-data:
+  gremlin_data:
