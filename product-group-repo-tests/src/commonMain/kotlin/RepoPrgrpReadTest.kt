@@ -2,9 +2,9 @@ package com.crowdproj.marketplace.product.group.repo.tests
 
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroup
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroupId
+import com.crowdproj.marketplace.product.group.common.repo.DbPrgrpIdRequest
+import com.crowdproj.marketplace.product.group.common.repo.IPrgrpRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import repo.DbPrgrpIdRequest
-import repo.IPrgrpRepository
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

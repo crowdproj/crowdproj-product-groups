@@ -4,12 +4,12 @@ import PrgrpCorSettings
 import com.crowdproj.marketplace.product.group.biz.PrgrpProcessor
 import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.models.*
+import com.crowdproj.marketplace.product.group.common.repo.DbPrgrpResponse
 import com.crowdproj.marketplace.product.group.repo.tests.PrgrpRepositoryMock
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import models.PrgrpGroupLock
 import models.PrgrpVisibility
-import repo.DbPrgrpResponse
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue

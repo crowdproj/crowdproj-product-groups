@@ -1,4 +1,4 @@
-package repo
+package com.crowdproj.marketplace.product.group.common.repo
 
 interface IPrgrpRepository {
     suspend fun createPrGroup(rq: DbPrgrpRequest): DbPrgrpResponse

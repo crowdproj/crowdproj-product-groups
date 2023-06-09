@@ -2,9 +2,9 @@ package com.crowdproj.marketplace.product.group.common
 
 import PrgrpCorSettings
 import com.crowdproj.marketplace.product.group.common.models.*
+import com.crowdproj.marketplace.product.group.common.repo.IPrgrpRepository
 import kotlinx.datetime.Instant
 import com.crowdproj.marketplace.product.group.common.stubs.PrgrpStubs
-import repo.IPrgrpRepository
 
 data class PrgrpContext(
     var command: PrgrpCommand = PrgrpCommand.NONE,

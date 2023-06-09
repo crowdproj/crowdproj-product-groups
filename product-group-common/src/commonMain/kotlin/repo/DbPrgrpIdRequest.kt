@@ -1,4 +1,4 @@
-package repo
+package com.crowdproj.marketplace.product.group.common.repo
 
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroup
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroupId

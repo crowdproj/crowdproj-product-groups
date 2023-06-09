@@ -1,8 +1,10 @@
 package com.crowdproj.marketplace.product.group.repo.gremlin
 
+import com.crowdproj.marketplace.product.group.common.repo.IPrgrpRepository
 import com.crowdproj.marketplace.product.group.repo.tests.RepoPrgrpCreateTest
 import com.crowdproj.marketplace.product.group.repo.tests.RepoPrgrpSearchTest
-import repo.IPrgrpRepository
+
+
 
 class PrgrpRepoGremlinCreateTest : RepoPrgrpCreateTest() {
     override val repo: IPrgrpRepository by lazy {

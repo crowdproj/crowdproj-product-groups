@@ -1,4 +1,4 @@
-package exceptions
+package com.crowdproj.marketplace.product.group.common.exceptions
 
 import models.PrgrpGroupLock
 

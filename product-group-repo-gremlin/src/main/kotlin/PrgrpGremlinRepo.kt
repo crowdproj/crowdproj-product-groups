@@ -8,6 +8,7 @@ import com.crowdproj.marketplace.product.group.common.models.PrgrpError
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroup
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroupId
 import com.crowdproj.marketplace.product.group.common.models.PrgrpUserId
+import com.crowdproj.marketplace.product.group.common.repo.*
 import com.crowdproj.marketplace.product.group.repo.gremlin.PrgrpGremlinConst.FIELD_LOCK
 import com.crowdproj.marketplace.product.group.repo.gremlin.PrgrpGremlinConst.FIELD_NAME
 import com.crowdproj.marketplace.product.group.repo.gremlin.PrgrpGremlinConst.FIELD_OWNER_ID
@@ -27,7 +28,6 @@ import org.apache.tinkerpop.gremlin.process.traversal.TextP
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource
 import org.apache.tinkerpop.gremlin.structure.Vertex
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.`__` as gr
-import repo.*
 
 class PrgrpGremlinRepo(
     private val hosts: String,

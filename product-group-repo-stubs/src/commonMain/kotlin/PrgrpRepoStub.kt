@@ -1,7 +1,7 @@
 package com.crowdproj.marketplace.product.group.repo.stubs
 
+import com.crowdproj.marketplace.product.group.common.repo.*
 import com.crowdproj.marketplace.product.group.stubs.PrgrpStub
-import repo.*
 
 class PrgrpRepoStub() : IPrgrpRepository {
     override suspend fun createPrGroup(rq: DbPrgrpRequest): DbPrgrpResponse {

@@ -1,5 +1,5 @@
+import com.crowdproj.marketplace.product.group.common.repo.IPrgrpRepository
 import com.crowdproj.marketplace.product.group.logging.common.LoggerProvider
-import repo.IPrgrpRepository
 
 data class PrgrpCorSettings(
     val loggerProvider: LoggerProvider = LoggerProvider(),

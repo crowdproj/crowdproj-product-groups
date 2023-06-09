@@ -1,6 +1,7 @@
 package com.crowdproj.marketplace.product.group.repo.tests
 
-import repo.*
+import com.crowdproj.marketplace.product.group.common.repo.*
+
 
 class PrgrpRepositoryMock(
     private val invokeCreatePrgrp: (DbPrgrpRequest) -> DbPrgrpResponse = { DbPrgrpResponse.MOCK_SUCCESS_EMPTY },

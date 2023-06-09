@@ -6,7 +6,7 @@ import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.helpers.errorAdministration
 import com.crowdproj.marketplace.product.group.common.helpers.fail
 import com.crowdproj.marketplace.product.group.common.models.PrgrpWorkMode
-import repo.IPrgrpRepository
+import com.crowdproj.marketplace.product.group.common.repo.IPrgrpRepository
 
 fun CorChainDsl<PrgrpContext>.initRepo(title: String) = worker {
     this.title = title
