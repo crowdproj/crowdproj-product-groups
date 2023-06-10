@@ -1,7 +1,7 @@
-# crowdproj-product-groups
+# crowdproj-product-general
 
 
-Prod-groups is a microservice for defining product groups, describing common properties for similar products. Ready SAAS
+Prod-general is a microservice for defining product general, describing common properties for similar products. Ready SAAS
 solution for marketplaces.
 
 ## What's new in the project

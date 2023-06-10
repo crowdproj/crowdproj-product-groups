@@ -1,10 +1,13 @@
-package com.crowdproj.marketplace.product.group.biz
+package com.crowdproj.marketplace.product.group.biz.validation
 
+import PrgrpCorSettings
+import com.crowdproj.marketplace.product.group.biz.PrgrpProcessor
 import com.crowdproj.marketplace.product.group.common.PrgrpContext
 import com.crowdproj.marketplace.product.group.common.models.PrgrpCommand
 import com.crowdproj.marketplace.product.group.common.models.PrgrpGroupFilter
 import com.crowdproj.marketplace.product.group.common.models.PrgrpState
 import com.crowdproj.marketplace.product.group.common.models.PrgrpWorkMode
+import com.crowdproj.marketplace.product.group.repo.stubs.PrgrpRepoStub
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -15,7 +18,13 @@ import kotlin.test.assertNotEquals
 class BizValidationSearchTest {
 
     private val command = PrgrpCommand.SEARCH
-    private val processor by lazy { PrgrpProcessor() }
+    private val settings by lazy {
+        PrgrpCorSettings(
+            repoTest = PrgrpRepoStub(),
+        )
+    }
+
+    private val processor by lazy { PrgrpProcessor(settings) }
 
     @Test
     fun correctEmpty() = runTest {

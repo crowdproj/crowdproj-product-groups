@@ -34,5 +34,10 @@ include("product-group-logging-common")
 include("product-group-logging-kermit")
 include("product-group-log-mapper")
 
+include("product-group-repo-in-memory")
+include("product-group-repo-tests")
+include("product-group-repo-stubs")
+include("product-group-repo-gremlin")
+
 include("product-group-fluentbit")
 include("product-group-biz")

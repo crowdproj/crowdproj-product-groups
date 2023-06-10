@@ -1,6 +1,8 @@
 package com.crowdproj.marketplace.product.group.common
 
+import PrgrpCorSettings
 import com.crowdproj.marketplace.product.group.common.models.*
+import com.crowdproj.marketplace.product.group.common.repo.IPrgrpRepository
 import kotlinx.datetime.Instant
 import com.crowdproj.marketplace.product.group.common.stubs.PrgrpStubs
 
@@ -8,6 +10,7 @@ data class PrgrpContext(
     var command: PrgrpCommand = PrgrpCommand.NONE,
     var state: PrgrpState = PrgrpState.NONE,
     val errors: MutableList<PrgrpError> = mutableListOf(),
+    var settings: PrgrpCorSettings = PrgrpCorSettings.NONE,
 
     var workMode: PrgrpWorkMode = PrgrpWorkMode.PROD,
     var stubCase: PrgrpStubs = PrgrpStubs.NONE,
@@ -25,4 +28,9 @@ data class PrgrpContext(
     var prgrpValidated: PrgrpGroup = PrgrpGroup(),
     var prgrpFilterValidated: PrgrpGroupFilter = PrgrpGroupFilter(),
 
+    var prgrpRepo: IPrgrpRepository = IPrgrpRepository.NONE,
+    var prgrpRepoRead: PrgrpGroup = PrgrpGroup(),
+    var prgrpRepoPrepare: PrgrpGroup = PrgrpGroup(),
+    var prgrpRepoDone: PrgrpGroup = PrgrpGroup(),
+    var prgrpsRepoDone: MutableList<PrgrpGroup> = mutableListOf(),
    )

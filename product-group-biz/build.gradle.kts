@@ -19,6 +19,7 @@ kotlin {
                 implementation(kotlin("stdlib-common"))
 
                 implementation(project(":product-group-common"))
+                implementation(project(":product-group-logging-common"))
                 implementation(project(":product-group-stubs"))
             }
         }
@@ -27,6 +28,12 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+
+                implementation(project(":product-group-logging-common"))
+
+                implementation(project(":product-group-repo-stubs"))
+                implementation(project(":product-group-repo-tests"))
+                implementation(project(":product-group-repo-in-memory"))
 
                 api("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
             }
