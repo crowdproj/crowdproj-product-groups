@@ -40,7 +40,7 @@ fun GraphTraversal<Vertex, Vertex>.addMkplPrgrp(prgrp: PrgrpGroup): GraphTravers
             prgrp.visibility.takeIf { it != PrgrpVisibility.NONE }?.name
         )
         .property(
-            VertexProperty.Cardinality.set,
+            VertexProperty.Cardinality.single,
             FIELD_PROPERTY_ID,
             prgrp.properties.filter { it != PrgrpPropertyId.NONE }.mapTo(mutableSetOf()) { it.asString() }
         )
